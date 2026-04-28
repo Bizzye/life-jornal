@@ -35,7 +35,11 @@ export function formatTime(dateStr: string): string {
 }
 
 export function todayISO(): string {
-  return new Date().toISOString().split("T")[0];
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
 
 export function nowTime(): string {
@@ -48,15 +52,17 @@ export function nowTime(): string {
 
 export function formatDayHeader(dateStr: string): string {
   const today = todayISO();
-  const d = new Date(dateStr);
-  const iso = d.toISOString().split("T")[0];
 
-  if (iso === today) return "Hoje";
+  if (dateStr === today) return "Hoje";
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  if (iso === yesterday.toISOString().split("T")[0]) return "Ontem";
+  const yy = yesterday.getFullYear();
+  const ym = String(yesterday.getMonth() + 1).padStart(2, "0");
+  const yd = String(yesterday.getDate()).padStart(2, "0");
+  if (dateStr === `${yy}-${ym}-${yd}`) return "Ontem";
 
+  const d = new Date(dateStr + "T12:00:00");
   return d.toLocaleDateString("pt-BR", {
     weekday: "long",
     day: "2-digit",

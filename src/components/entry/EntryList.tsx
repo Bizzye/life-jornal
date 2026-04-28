@@ -1,17 +1,14 @@
-import { FlatList } from "react-native";
-import { YStack, Text } from "tamagui";
-import { RegistroCard } from "./RegistroCard";
 import type { Registro } from "@/types";
+import { FlatList } from "react-native";
+import { Text, YStack } from "tamagui";
+import { EntryCard } from "./EntryCard";
 
-interface RegistroListProps {
+interface EntryListProps {
   registros: Registro[];
   onPressRegistro?: (registro: Registro) => void;
 }
 
-export function RegistroList({
-  registros,
-  onPressRegistro,
-}: RegistroListProps) {
+export function EntryList({ registros, onPressRegistro }: EntryListProps) {
   if (registros.length === 0) {
     return (
       <YStack flex={1} justifyContent="center" alignItems="center" padding="$6">
@@ -30,7 +27,7 @@ export function RegistroList({
       data={registros}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <RegistroCard registro={item} onPress={() => onPressRegistro?.(item)} />
+        <EntryCard registro={item} onPress={() => onPressRegistro?.(item)} />
       )}
       showsVerticalScrollIndicator={false}
     />

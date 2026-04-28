@@ -1,5 +1,5 @@
-import { NovoRegistroScreen } from "@/screens/NovoRegistroScreen";
+import { NewEntryScreen } from "@/screens/NewEntryScreen";
 
-export default function NovoRegistro() {
-  return <NovoRegistroScreen />;
+export default function NewEntry() {
+  return <NewEntryScreen />;
 }

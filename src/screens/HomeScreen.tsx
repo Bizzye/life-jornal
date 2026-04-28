@@ -1,23 +1,23 @@
-import { useMemo, useState } from "react";
-import { SectionList, ActivityIndicator } from "react-native";
-import { YStack, Text, XStack } from "tamagui";
-import { useRouter } from "expo-router";
-import { ScreenContainer } from "@/components/layout/ScreenContainer";
+import { EntryCard } from "@/components/entry/EntryCard";
 import { Header } from "@/components/layout/Header";
-import { RegistroCard } from "@/components/registro/RegistroCard";
+import { ScreenContainer } from "@/components/layout/ScreenContainer";
 import { Chip } from "@/components/ui/Chip";
 import { FAB } from "@/components/ui/FAB";
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
 import { useAuth } from "@/hooks/useAuth";
-import { useRegistros } from "@/hooks/useRegistros";
+import { useEntries } from "@/hooks/useEntries";
 import { CATEGORY_CONFIG } from "@/lib/constants";
 import {
-  getCategoryColor,
-  todayISO,
   formatDate,
   formatDayHeader,
+  getCategoryColor,
+  todayISO,
 } from "@/lib/utils";
 import type { Category, Registro } from "@/types";
+import { useRouter } from "expo-router";
+import { useMemo, useState } from "react";
+import { ActivityIndicator, SectionList } from "react-native";
+import { Text, XStack, YStack } from "tamagui";
 
 const allCategories = Object.entries(CATEGORY_CONFIG) as [
   Category,
@@ -39,12 +39,12 @@ function groupByDay(registros: Registro[]) {
 export function HomeScreen() {
   const { user } = useAuth();
   const [filter, setFilter] = useState<string | undefined>();
-  const { registros, loading, hasMore, loadMore } = useRegistros({
+  const { entries, loading, hasMore, loadMore } = useEntries({
     category: filter,
   });
   const router = useRouter();
 
-  const sections = useMemo(() => groupByDay(registros), [registros]);
+  const sections = useMemo(() => groupByDay(entries), [entries]);
 
   return (
     <ScreenContainer>
@@ -93,15 +93,15 @@ export function HomeScreen() {
             {formatDayHeader(title)}
           </Text>
         )}
-        renderItem={({ item }) => <RegistroCard registro={item} />}
+        renderItem={({ item }) => <EntryCard registro={item} />}
         onEndReached={loadMore}
         onEndReachedThreshold={0.3}
         ListFooterComponent={
-          loading && registros.length > 0 ? (
+          loading && entries.length > 0 ? (
             <YStack padding="$4" alignItems="center">
               <ActivityIndicator color="#E08A38" />
             </YStack>
-          ) : !hasMore && registros.length > 0 ? (
+          ) : !hasMore && entries.length > 0 ? (
             <Text
               color="$textMuted"
               fontSize="$2"

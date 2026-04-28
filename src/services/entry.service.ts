@@ -1,10 +1,10 @@
 import { supabase } from "@/lib/supabase";
+import type { EntryInput } from "@/schemas/entry.schema";
 import type { Registro } from "@/types";
-import type { RegistroInput } from "@/schemas/registro.schema";
 
 const TABLE = "registros";
 
-export const registroService = {
+export const entryService = {
   async list(
     userId: string,
     filters?: { category?: string; offset?: number; limit?: number },
@@ -26,7 +26,19 @@ export const registroService = {
     return data as Registro[];
   },
 
-  async create(userId: string, input: RegistroInput) {
+  async listByDateRange(userId: string, startDate: string, endDate: string) {
+    const { data, error } = await supabase
+      .from(TABLE)
+      .select("*")
+      .eq("user_id", userId)
+      .gte("event_date", startDate)
+      .lte("event_date", endDate)
+      .order("event_date", { ascending: true });
+    if (error) throw error;
+    return data as Registro[];
+  },
+
+  async create(userId: string, input: EntryInput) {
     const { event_time, event_date, ...rest } = input;
     const combinedDate = `${event_date}T${event_time || "00:00"}:00`;
     const { data, error } = await supabase
@@ -43,7 +55,7 @@ export const registroService = {
     return data as Registro;
   },
 
-  async update(id: string, input: Partial<RegistroInput>) {
+  async update(id: string, input: Partial<EntryInput>) {
     const { data, error } = await supabase
       .from(TABLE)
       .update(input)

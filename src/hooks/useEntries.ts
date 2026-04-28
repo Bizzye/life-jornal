@@ -1,20 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useRegistroStore } from "@/stores/registro.store";
+import type { EntryInput } from "@/schemas/entry.schema";
+import { entryService } from "@/services/entry.service";
 import { useAuthStore } from "@/stores/auth.store";
-import { registroService } from "@/services/registro.service";
-import type { RegistroInput } from "@/schemas/registro.schema";
+import { useEntryStore } from "@/stores/entry.store";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const PAGE_SIZE = 5;
 
-export function useRegistros(filters?: { category?: string }) {
-  const {
-    registros,
-    loading,
-    setRegistros,
-    addRegistro,
-    removeRegistro,
-    setLoading,
-  } = useRegistroStore();
+export function useEntries(filters?: { category?: string }) {
+  const { entries, loading, setEntries, addEntry, removeEntry, setLoading } =
+    useEntryStore();
   const userId = useAuthStore((s) => s.user?.id);
   const [hasMore, setHasMore] = useState(true);
   const offsetRef = useRef(0);
@@ -26,7 +20,7 @@ export function useRegistros(filters?: { category?: string }) {
       filterRef.current = filters?.category;
       offsetRef.current = 0;
       setHasMore(true);
-      setRegistros([]);
+      setEntries([]);
     }
   }, [filters?.category]);
 
@@ -39,15 +33,15 @@ export function useRegistros(filters?: { category?: string }) {
       }
       setLoading(true);
       try {
-        const data = await registroService.list(userId, {
+        const data = await entryService.list(userId, {
           category: filters?.category,
           offset: offsetRef.current,
           limit: PAGE_SIZE,
         });
         if (reset || offsetRef.current === 0) {
-          setRegistros(data);
+          setEntries(data);
         } else {
-          setRegistros([...registros, ...data]);
+          setEntries([...entries, ...data]);
         }
         offsetRef.current += data.length;
         if (data.length < PAGE_SIZE) setHasMore(false);
@@ -55,7 +49,7 @@ export function useRegistros(filters?: { category?: string }) {
         setLoading(false);
       }
     },
-    [userId, filters?.category, registros],
+    [userId, filters?.category, entries],
   );
 
   // Initial load + reload on filter change
@@ -64,14 +58,14 @@ export function useRegistros(filters?: { category?: string }) {
     setHasMore(true);
     if (userId) {
       setLoading(true);
-      registroService
+      entryService
         .list(userId, {
           category: filters?.category,
           offset: 0,
           limit: PAGE_SIZE,
         })
         .then((data) => {
-          setRegistros(data);
+          setEntries(data);
           offsetRef.current = data.length;
           if (data.length < PAGE_SIZE) setHasMore(false);
         })
@@ -85,19 +79,19 @@ export function useRegistros(filters?: { category?: string }) {
     }
   }, [loading, hasMore, fetchPage]);
 
-  const create = async (input: RegistroInput) => {
+  const create = async (input: EntryInput) => {
     if (!userId) return;
-    const registro = await registroService.create(userId, input);
-    addRegistro(registro);
-    return registro;
+    const entry = await entryService.create(userId, input);
+    addEntry(entry);
+    return entry;
   };
 
   const remove = async (id: string) => {
-    await registroService.remove(id);
-    removeRegistro(id);
+    await entryService.remove(id);
+    removeEntry(id);
   };
 
   const refetch = useCallback(() => fetchPage(true), [fetchPage]);
 
-  return { registros, loading, hasMore, create, remove, refetch, loadMore };
+  return { entries, loading, hasMore, create, remove, refetch, loadMore };
 }

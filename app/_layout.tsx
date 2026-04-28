@@ -1,11 +1,12 @@
+import { useAuthInit } from "@/hooks/useAuth";
+import { useProtectedRoute } from "@/hooks/useProtectedRoute";
+import config from "@/theme/tamagui.config";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { TamaguiProvider } from "tamagui";
-import config from "@/theme/tamagui.config";
-import { useProtectedRoute } from "@/hooks/useProtectedRoute";
-import { useAuthInit } from "@/hooks/useAuth";
 
 export { ErrorBoundary } from "expo-router";
 
@@ -31,9 +32,11 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <TamaguiProvider config={config} defaultTheme="dark">
-      <RootNav />
-    </TamaguiProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <TamaguiProvider config={config} defaultTheme="dark">
+        <RootNav />
+      </TamaguiProvider>
+    </GestureHandlerRootView>
   );
 }
 

@@ -1,7 +1,7 @@
-import "react-native-url-polyfill/auto";
 import { createClient } from "@supabase/supabase-js";
-import { Platform } from "react-native";
 import * as SecureStore from "expo-secure-store";
+import { Platform } from "react-native";
+import "react-native-url-polyfill/auto";
 
 const secureStoreAdapter = {
   getItem: (key: string) => SecureStore.getItemAsync(key),
@@ -16,8 +16,16 @@ const webStorageAdapter = {
   removeItem: (key: string) => globalThis.localStorage?.removeItem(key),
 };
 
+const supabaseUrl =
+  Platform.OS === "web"
+    ? process.env.EXPO_PUBLIC_SUPABASE_URL!.replace(
+        /^(https?:\/\/)[^:]+(\:\d+)/,
+        "$1localhost$2",
+      )
+    : process.env.EXPO_PUBLIC_SUPABASE_URL!;
+
 export const supabase = createClient(
-  process.env.EXPO_PUBLIC_SUPABASE_URL!,
+  supabaseUrl,
   process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!,
   {
     auth: {

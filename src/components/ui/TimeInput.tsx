@@ -1,7 +1,8 @@
-import { Platform } from "react-native";
-import { Pressable } from "react-native";
-import { XStack, Text } from "tamagui";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import { Clock } from "lucide-react-native";
+import { useState } from "react";
+import { Platform, Pressable } from "react-native";
+import { Text, XStack } from "tamagui";
 
 const ACCENT = "#E08A38";
 const TEXT = "#F5F0E8";
@@ -15,6 +16,8 @@ interface TimeInputProps {
 }
 
 export function TimeInput({ value, onChange, placeholder }: TimeInputProps) {
+  const [show, setShow] = useState(false);
+
   if (Platform.OS === "web") {
     return (
       <XStack
@@ -48,24 +51,45 @@ export function TimeInput({ value, onChange, placeholder }: TimeInputProps) {
     );
   }
 
-  // Native fallback
+  const [hours, minutes] = (value || "12:00").split(":").map(Number);
+  const timeDate = new Date();
+  timeDate.setHours(hours, minutes, 0, 0);
+
   return (
-    <Pressable>
-      <XStack
-        backgroundColor="rgba(255,255,255,0.06)"
-        borderRadius="$3"
-        borderWidth={1}
-        borderColor={BORDER}
-        height={52}
-        alignItems="center"
-        paddingHorizontal="$3"
-        gap="$2"
-      >
-        <Clock size={18} color={ACCENT} />
-        <Text color={value ? TEXT : TEXT_DIM} fontSize="$3" flex={1}>
-          {value || (placeholder ?? "Selecione a hora")}
-        </Text>
-      </XStack>
-    </Pressable>
+    <>
+      <Pressable onPress={() => setShow(true)}>
+        <XStack
+          backgroundColor="rgba(255,255,255,0.06)"
+          borderRadius="$3"
+          borderWidth={1}
+          borderColor={BORDER}
+          height={52}
+          alignItems="center"
+          paddingHorizontal="$3"
+          gap="$2"
+        >
+          <Clock size={18} color={ACCENT} />
+          <Text color={value ? TEXT : TEXT_DIM} fontSize="$3" flex={1}>
+            {value || (placeholder ?? "Selecione a hora")}
+          </Text>
+        </XStack>
+      </Pressable>
+      {show && (
+        <DateTimePicker
+          value={timeDate}
+          mode="time"
+          is24Hour
+          display="default"
+          onChange={(_, selected) => {
+            setShow(false);
+            if (selected) {
+              const h = String(selected.getHours()).padStart(2, "0");
+              const m = String(selected.getMinutes()).padStart(2, "0");
+              onChange(`${h}:${m}`);
+            }
+          }}
+        />
+      )}
+    </>
   );
 }

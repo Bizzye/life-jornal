@@ -1,9 +1,9 @@
-import { z } from "zod";
 import { CATEGORIES, LIMITS } from "@/lib/constants";
+import { z } from "zod";
 
 const categoryEnum = z.enum(CATEGORIES as [string, ...string[]]);
 
-export const registroSchema = z.object({
+export const entrySchema = z.object({
   category: categoryEnum,
   title: z
     .string()
@@ -18,4 +18,4 @@ export const registroSchema = z.object({
   photo_urls: z.array(z.string().url()).max(3, "Máximo 3 fotos").optional(),
 });
 
-export type RegistroInput = z.infer<typeof registroSchema>;
+export type EntryInput = z.infer<typeof entrySchema>;

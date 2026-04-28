@@ -43,3 +43,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Docker Supabase volumes (dados persistidos, baixados pelo setup.sh)
+docker/volumes/
+docker/.env

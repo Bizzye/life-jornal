@@ -1,22 +1,22 @@
-import { YStack, Text, XStack } from "tamagui";
-import { useState, createElement } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registroSchema, type RegistroInput } from "@/schemas/registro.schema";
-import { Input } from "@/components/ui/Input";
-import { TextArea } from "@/components/ui/TextArea";
 import { Button } from "@/components/ui/Button";
-import { Select } from "@/components/ui/Select";
 import { DateInput } from "@/components/ui/DateInput";
-import { TimeInput } from "@/components/ui/TimeInput";
 import { ImageCarousel } from "@/components/ui/ImageCarousel";
-import { CATEGORY_CONFIG } from "@/lib/constants";
-import { getCategoryColor, todayISO, nowTime } from "@/lib/utils";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { TextArea } from "@/components/ui/TextArea";
+import { TimeInput } from "@/components/ui/TimeInput";
 import { useImagePicker } from "@/hooks/useImagePicker";
+import { CATEGORY_CONFIG } from "@/lib/constants";
+import { getCategoryColor, nowTime, todayISO } from "@/lib/utils";
+import { entrySchema, type EntryInput } from "@/schemas/entry.schema";
 import type { Category } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createElement, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { Text, YStack } from "tamagui";
 
-interface RegistroFormProps {
-  onSubmit: (data: RegistroInput) => Promise<void>;
+interface EntryFormProps {
+  onSubmit: (data: EntryInput) => Promise<void>;
   loading?: boolean;
 }
 
@@ -31,7 +31,7 @@ const categoryOptions = categories.map(([key, cfg]) => ({
   icon: createElement(cfg.icon, { size: 18, color: getCategoryColor(key) }),
 }));
 
-export function RegistroForm({ onSubmit, loading }: RegistroFormProps) {
+export function EntryForm({ onSubmit, loading }: EntryFormProps) {
   const { pickAndUpload, uploading } = useImagePicker();
   const [photoUrls, setPhotoUrls] = useState<string[]>([]);
   const {
@@ -39,8 +39,8 @@ export function RegistroForm({ onSubmit, loading }: RegistroFormProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<RegistroInput>({
-    resolver: zodResolver(registroSchema),
+  } = useForm<EntryInput>({
+    resolver: zodResolver(entrySchema),
     defaultValues: {
       category: "personal",
       title: "",
@@ -60,7 +60,7 @@ export function RegistroForm({ onSubmit, loading }: RegistroFormProps) {
     setPhotoUrls((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleFormSubmit = async (data: RegistroInput) => {
+  const handleFormSubmit = async (data: EntryInput) => {
     await onSubmit({ ...data, photo_urls: photoUrls });
     reset();
     setPhotoUrls([]);
