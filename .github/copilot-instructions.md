@@ -100,3 +100,20 @@ npm run build:apk                                 # APK (local, needs JDK 17 + A
 - `.env` is gitignored — copy `.env.example` and fill values
 - EAS project ID: `684ae3db-0169-4872-b550-55ed260a086d`
 - Android package: `com.danielbizarro.lifejournal`
+
+## Maintenance Matrix
+
+When making changes, ensure all related files are updated:
+
+| Change Made               | Files to Update                                                                                                                                                      |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| New screen added          | `src/screens/NewScreen.tsx`, `app/(tabs)/route.tsx`, `app/(tabs)/_layout.tsx` (tab config + icon)                                                                    |
+| New category added        | `src/types/index.ts` (Category type), `src/lib/constants.ts` (CATEGORIES + CATEGORY_CONFIG), `src/theme/tokens.ts` (color), `src/schemas/entry.schema.ts` (zod enum) |
+| New service added         | `src/services/new.service.ts`, `src/hooks/useNew.ts`, optionally `src/stores/new.store.ts`                                                                           |
+| New hook added            | `src/hooks/useNew.ts` — ensure it uses services (not direct Supabase calls)                                                                                          |
+| Schema changed (DB)       | `supabase/migrations/` (new SQL file), `src/types/index.ts`, `src/services/` (queries), `src/schemas/` (Zod)                                                         |
+| New UI component          | `src/components/ui/NewComponent.tsx` — named export, no business logic                                                                                               |
+| Theme/colors changed      | `src/theme/tokens.ts` only — all components reference tokens                                                                                                         |
+| New dependency added      | `package.json`, verify `app.json` plugins if Expo plugin needed                                                                                                      |
+| Build config changed      | `eas.json`, `.github/workflows/build-android.yml`, `AGENTS.md` (Build & Run section)                                                                                 |
+| Project structure changed | `AGENTS.md` (Repository Structure), `README.md` (Estrutura do Projeto)                                                                                               |

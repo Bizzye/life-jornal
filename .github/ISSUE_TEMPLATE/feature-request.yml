@@ -1,0 +1,66 @@
+name: "✨ Feature Request"
+description: "Sugerir uma nova funcionalidade ou melhoria"
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado pela sugestão! Descreva a funcionalidade que você gostaria de ver no Life Journal.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição da Feature
+      description: Uma descrição clara da funcionalidade desejada.
+      placeholder: "Eu gostaria que o app..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivação
+      description: Por que essa feature seria útil? Qual problema ela resolve?
+      placeholder: "Atualmente eu preciso..., mas..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução Proposta
+      description: Como você imagina essa feature funcionando?
+      placeholder: "Ao clicar em..., o app deveria..."
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas Consideradas
+      description: Você considerou outras formas de resolver isso?
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área do app
+      options:
+        - Timeline (Home)
+        - Calendário
+        - Novo Registro
+        - Categorias
+        - Fotos
+        - Perfil / Configurações
+        - Design / UI
+        - Backend / API
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade (na sua opinião)
+      options:
+        - Alta — Essencial para o uso diário
+        - Média — Melhoraria bastante a experiência
+        - Baixa — Seria legal ter, mas não é urgente

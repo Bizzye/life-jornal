@@ -9,6 +9,11 @@
     "web": "expo start --web",
     "build:apk": "eas build --platform android --profile preview --local",
     "build:aab": "eas build --platform android --profile production --local",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
     "supabase:reset": "npx supabase db reset",
@@ -58,6 +63,10 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.0",
+    "eslint": "^9.39.4",
+    "eslint-config-expo": "^55.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.3",
     "prisma": "^7.8.0",
     "react-test-renderer": "19.1.0",
     "typescript": "~5.9.2"

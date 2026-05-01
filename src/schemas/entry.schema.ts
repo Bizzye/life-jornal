@@ -1,7 +1,7 @@
 import { CATEGORIES, LIMITS } from "@/lib/constants";
 import { z } from "zod";
 
-const categoryEnum = z.enum(CATEGORIES as [string, ...string[]]);
+const categoryEnum = z.enum(CATEGORIES as unknown as [string, ...string[]]);
 
 export const entrySchema = z.object({
   category: categoryEnum,

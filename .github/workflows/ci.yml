@@ -1,6 +1,27 @@
 name: CI
 
 on:
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/agents/**"
+      - ".github/instructions/**"
+      - "assets/**"
+      - "LICENSE"
+      - ".gitignore"
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/agents/**"
+      - ".github/instructions/**"
+      - "assets/**"
+      - "LICENSE"
+      - ".gitignore"
   workflow_dispatch:
 
 concurrency:

@@ -1,0 +1,1806 @@
+[
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião de planejamento trimestral",
+    "body": "Discussão sobre metas do Q2 com a equipe inteira. Muitas ideias boas surgiram.",
+    "event_date": "2026-03-02T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Café da manhã no padaria nova",
+    "body": "Pão na chapa e café com leite. Atendimento excelente.",
+    "event_date": "2026-03-02T07:30:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Leitura matinal",
+    "body": "Li 30 páginas do livro sobre produtividade.",
+    "event_date": "2026-03-02T06:15:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Apresentação do projeto para cliente",
+    "body": "O cliente gostou muito da proposta. Próximos passos definidos.",
+    "event_date": "2026-03-03T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Almoço japonês",
+    "body": "Sushi e sashimi no restaurante novo do bairro.",
+    "event_date": "2026-03-03T12:30:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Treino na academia",
+    "body": "Treino de pernas + 20 min de esteira. Me senti ótimo depois.",
+    "event_date": "2026-03-03T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Happy hour com colegas",
+    "body": "Cerveja artesanal e petiscos no bar da esquina.",
+    "event_date": "2026-03-04T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pizza caseira",
+    "body": "Fiz pizza de mussarela e calabresa em casa. Ficou incrível!",
+    "event_date": "2026-03-04T20:30:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Meditação guiada",
+    "body": "15 minutos de meditação com app. Dia mais tranquilo depois.",
+    "event_date": "2026-03-05T06:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Consulta médica",
+    "body": "Check-up anual. Tudo dentro do normal, graças a Deus.",
+    "event_date": "2026-03-05T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Açaí na tigela",
+    "body": "Açaí com granola, banana e morango. Perfeito pro calor.",
+    "event_date": "2026-03-06T15:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Organizei o escritório",
+    "body": "Limpei a mesa, organizei papéis e cabos. Ambiente muito melhor.",
+    "event_date": "2026-03-06T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aniversário da Maria",
+    "body": "Festa surpresa na casa dela. Ela adorou!",
+    "event_date": "2026-03-07T20:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bolo de chocolate",
+    "body": "Bolo caseiro da vó. Receita tradicional da família.",
+    "event_date": "2026-03-07T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Caminhada no parque",
+    "body": "40 minutos caminhando. Vento fresco, muito relaxante.",
+    "event_date": "2026-03-08T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Workshop de fotografia",
+    "body": "Aprendi sobre composição e iluminação natural. Muito didático.",
+    "event_date": "2026-03-08T14:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Feijoada completa",
+    "body": "Feijoada com todos os acompanhamentos. Almoço de sábado perfeito.",
+    "event_date": "2026-03-08T12:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Assisti filme novo",
+    "body": "Vi o novo filme de ficção científica. Efeitos incríveis.",
+    "event_date": "2026-03-09T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Churrasco em família",
+    "body": "Domingo clássico com churrasco, música e risadas.",
+    "event_date": "2026-03-09T12:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Coxinha de frango",
+    "body": "Experimentei a coxinha do food truck novo. Muito crocante!",
+    "event_date": "2026-03-10T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Comecei curso online",
+    "body": "Primeiro módulo do curso de TypeScript avançado.",
+    "event_date": "2026-03-10T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Entrevista de emprego",
+    "body": "Fui entrevistado para vaga de senior. Acho que foi bem.",
+    "event_date": "2026-03-11T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Hambúrguer artesanal",
+    "body": "Blend de costela e fraldinha com queijo cheddar. Sensacional.",
+    "event_date": "2026-03-11T19:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Ligação com amigo distante",
+    "body": "Conversei 1 hora com Pedro que mora em Lisboa. Saudades.",
+    "event_date": "2026-03-12T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião com mentor",
+    "body": "Conversa sobre carreira e próximos passos profissionais.",
+    "event_date": "2026-03-12T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Salada caesar",
+    "body": "Almoço leve com salada caesar e suco natural.",
+    "event_date": "2026-03-13T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Arrumei o guarda-roupa",
+    "body": "Doei roupas que não uso mais. Espaço renovado.",
+    "event_date": "2026-03-13T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Palestra sobre IA",
+    "body": "Palestra online sobre impactos da IA no mercado de trabalho.",
+    "event_date": "2026-03-14T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Tacos mexicanos",
+    "body": "Tacos de carne com guacamole e pico de gallo.",
+    "event_date": "2026-03-14T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Yoga matinal",
+    "body": "Sessão de 30 min de yoga. Flexibilidade melhorando.",
+    "event_date": "2026-03-15T06:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Feira de tecnologia",
+    "body": "Visitei a feira e testei vários gadgets novos.",
+    "event_date": "2026-03-15T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Smoothie de frutas vermelhas",
+    "body": "Morango, mirtilo e framboesa. Energia pura!",
+    "event_date": "2026-03-15T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Escrevi no diário",
+    "body": "Reflexões sobre o mês e objetivos para as próximas semanas.",
+    "event_date": "2026-03-16T22:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Voluntariado no abrigo",
+    "body": "Ajudei a servir almoço no abrigo comunitário. Dia gratificante.",
+    "event_date": "2026-03-16T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pão de queijo quentinho",
+    "body": "Fiz pão de queijo em casa. Receita mineira autêntica.",
+    "event_date": "2026-03-17T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Podcast sobre filosofia",
+    "body": "Ouvi episódio sobre estoicismo aplicado ao dia a dia.",
+    "event_date": "2026-03-17T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Code review com time",
+    "body": "Revisamos 5 PRs importantes. Discussões produtivas.",
+    "event_date": "2026-03-18T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Marmita fitness",
+    "body": "Frango grelhado, arroz integral e brócolis. Simples e nutritivo.",
+    "event_date": "2026-03-18T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Compras no mercado",
+    "body": "Abasteci a despensa para a semana toda.",
+    "event_date": "2026-03-18T17:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Demo do produto",
+    "body": "Apresentei a nova feature para os stakeholders. Aprovada!",
+    "event_date": "2026-03-19T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Sopa de legumes",
+    "body": "Sopa caseira com cenoura, batata, abobrinha e mandioquinha.",
+    "event_date": "2026-03-19T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Arrumei a bicicleta",
+    "body": "Calibrei pneus e lubriquei corrente. Pronta pra pedalar!",
+    "event_date": "2026-03-20T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Pedalada no parque",
+    "body": "15km de bike com amigos. Trilha nova muito bonita.",
+    "event_date": "2026-03-20T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Crepe de nutella",
+    "body": "Crepe fininho com nutella e morango. Sobremesa perfeita.",
+    "event_date": "2026-03-20T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Assistir série nova",
+    "body": "Comecei a assistir a nova temporada. Episódio piloto promissor.",
+    "event_date": "2026-03-21T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Almoço corporativo",
+    "body": "Almoço com toda a equipe no restaurante italiano.",
+    "event_date": "2026-03-21T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Risoto de cogumelos",
+    "body": "Risoto cremoso com mix de cogumelos e parmesão.",
+    "event_date": "2026-03-21T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Limpeza geral da casa",
+    "body": "Faxina completa. Casa brilhando e cheirosa.",
+    "event_date": "2026-03-22T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Ida ao museu",
+    "body": "Exposição de arte moderna. Obras provocativas e interessantes.",
+    "event_date": "2026-03-22T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Café especial",
+    "body": "Provei café etíope de torra clara. Sabor frutado incrível.",
+    "event_date": "2026-03-22T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião de condomínio",
+    "body": "Discutimos reforma do salão de festas e novo porteiro.",
+    "event_date": "2026-03-23T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Estudei para certificação",
+    "body": "2 horas de estudo focado para a certificação AWS.",
+    "event_date": "2026-03-23T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Panqueca americana",
+    "body": "Panquecas fofinhas com maple syrup e manteiga.",
+    "event_date": "2026-03-24T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Sprint planning",
+    "body": "Planejamento da sprint 15. Muitas tarefas importantes.",
+    "event_date": "2026-03-24T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Cortei o cabelo",
+    "body": "Visual renovado. Barbeiro novo mandou muito bem.",
+    "event_date": "2026-03-24T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Wrap de frango",
+    "body": "Wrap com frango desfiado, cream cheese e rúcula.",
+    "event_date": "2026-03-25T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Webinar de React Native",
+    "body": "Novidades do Expo SDK 54 e melhorias de performance.",
+    "event_date": "2026-03-25T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Troquei lâmpadas de casa",
+    "body": "Coloquei LED em todos os cômodos. Economia na conta de luz.",
+    "event_date": "2026-03-26T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Lasanha da mãe",
+    "body": "A melhor lasanha do mundo. Receita secreta da família.",
+    "event_date": "2026-03-26T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aula de violão",
+    "body": "Aprendi novos acordes e dedilhados. Evolução constante.",
+    "event_date": "2026-03-26T17:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Comprei livro novo",
+    "body": "Peguei 'Atomic Habits' na livraria. Já comecei a ler.",
+    "event_date": "2026-03-27T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Brigadeiro gourmet",
+    "body": "Fiz brigadeiros de pistache e Nutella. Sucesso total.",
+    "event_date": "2026-03-27T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Encontro de devs local",
+    "body": "Meetup sobre microsserviços. Networking produtivo.",
+    "event_date": "2026-03-27T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Lavei o carro",
+    "body": "Lavagem completa por dentro e por fora. Brilhando!",
+    "event_date": "2026-03-28T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pastel de feira",
+    "body": "Pastel de carne e pastel de queijo na feira de sábado.",
+    "event_date": "2026-03-28T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Jogo de futebol com amigos",
+    "body": "Pelada no campo society. Meu time ganhou de 3x1!",
+    "event_date": "2026-03-28T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Maratona de podcast",
+    "body": "Ouvi 4 episódios sobre empreendedorismo digital.",
+    "event_date": "2026-03-29T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Yakisoba caseiro",
+    "body": "Preparei yakisoba com legumes e frango. Receita do YouTube.",
+    "event_date": "2026-03-29T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Cinema com namorada",
+    "body": "Assistimos o filme de ação novo. Pipoca extra manteiga.",
+    "event_date": "2026-03-29T21:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Reorganizei o Notion",
+    "body": "Criei novo sistema de organização com templates.",
+    "event_date": "2026-03-30T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Sanduíche natural",
+    "body": "Pão integral com peito de peru, alface e tomate.",
+    "event_date": "2026-03-30T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Retrospectiva da sprint",
+    "body": "Time refletiu sobre melhorias. Boa comunicação geral.",
+    "event_date": "2026-03-31T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz backup do computador",
+    "body": "Backup completo de fotos e documentos no HD externo.",
+    "event_date": "2026-03-31T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Frango xadrez",
+    "body": "Frango xadrez picante com amendoim. Receita chinesa adaptada.",
+    "event_date": "2026-03-31T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Daily standup especial",
+    "body": "Celebramos a entrega do projeto X. Todo mundo animado.",
+    "event_date": "2026-04-01T09:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Omelete recheado",
+    "body": "Omelete com queijo, presunto e tomate. Café da manhã reforçado.",
+    "event_date": "2026-04-01T07:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Atualizei o currículo",
+    "body": "Adicionei novas experiências e projetos recentes.",
+    "event_date": "2026-04-01T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Workshop de Tailwind CSS",
+    "body": "Aprendi utility-first CSS na prática. Muito eficiente.",
+    "event_date": "2026-04-02T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Torta de frango",
+    "body": "Torta de frango cremosa. Massa crocante e recheio suculento.",
+    "event_date": "2026-04-02T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Joguei videogame",
+    "body": "Zerando RPG novo. 3 horas de gameplay épico.",
+    "event_date": "2026-04-02T22:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Visita ao dentista",
+    "body": "Limpeza e revisão semestral. Tudo ok!",
+    "event_date": "2026-04-03T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bowl de açaí grande",
+    "body": "Açaí com paçoca, leite condensado e granola crocante.",
+    "event_date": "2026-04-03T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Plantei temperos na varanda",
+    "body": "Manjericão, cebolinha e salsinha. Mini horta urbana.",
+    "event_date": "2026-04-04T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Pair programming com João",
+    "body": "Resolvemos bug complexo juntos. Duas cabeças pensam melhor.",
+    "event_date": "2026-04-04T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Ceviche peruano",
+    "body": "Peixe fresco marinado no limão com cebola roxa e coentro.",
+    "event_date": "2026-04-04T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Dormi cedo",
+    "body": "Na cama às 21h. Melhor noite de sono em semanas.",
+    "event_date": "2026-04-05T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Festa junina antecipada",
+    "body": "Quadrilha, pipoca e quentão no clube do bairro.",
+    "event_date": "2026-04-05T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Caldo verde",
+    "body": "Caldo verde quentinho com linguiça calabresa e pão de alho.",
+    "event_date": "2026-04-05T19:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Trilha na serra",
+    "body": "Trilha de 8km com cachoeira no final. Vista espetacular.",
+    "event_date": "2026-04-06T07:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Liguei pra vó",
+    "body": "Conversa longa e cheia de histórias. Ela está ótima.",
+    "event_date": "2026-04-06T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bauru clássico",
+    "body": "Bauru no pão francês com rosbife, tomate e queijo derretido.",
+    "event_date": "2026-04-06T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Live coding no Twitch",
+    "body": "Assisti live de desenvolvimento de game indie. Inspirador.",
+    "event_date": "2026-04-07T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Montei quebra-cabeça",
+    "body": "Quebra-cabeça de 1000 peças. 3 horas de concentração.",
+    "event_date": "2026-04-07T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Sorvete artesanal",
+    "body": "Pistache e frutas vermelhas. Melhor sorveteria da cidade.",
+    "event_date": "2026-04-07T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Hackathon interno",
+    "body": "48h de hackathon na empresa. Nosso projeto ficou em 2º lugar!",
+    "event_date": "2026-04-08T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pizza de pepperoni",
+    "body": "Delivery de pizza. Massa fina e crocante, do jeito que gosto.",
+    "event_date": "2026-04-08T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Renovei assinatura do gym",
+    "body": "Plano anual renovado com desconto. Motivação em alta!",
+    "event_date": "2026-04-09T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião 1:1 com gestor",
+    "body": "Feedback positivo sobre meu desempenho. Promoção no radar.",
+    "event_date": "2026-04-09T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Poke bowl de salmão",
+    "body": "Salmão fresco com arroz, manga, edamame e molho shoyu.",
+    "event_date": "2026-04-09T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Organizei fotos do celular",
+    "body": "Deletei 500+ fotos duplicadas. Liberou 3GB de espaço.",
+    "event_date": "2026-04-10T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Conferência online de DevOps",
+    "body": "Talks sobre Kubernetes, observability e CI/CD.",
+    "event_date": "2026-04-10T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Espaguete ao alho e óleo",
+    "body": "Receita simples e deliciosa. Menos de 20 minutos.",
+    "event_date": "2026-04-10T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aniversário do trabalho",
+    "body": "3 anos de empresa! Ganhei bolo e cartão da equipe.",
+    "event_date": "2026-04-11T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Experimentei receita nova",
+    "body": "Tentei fazer ramen caseiro. Ficou razoável, preciso praticar.",
+    "event_date": "2026-04-11T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Ramen caseiro",
+    "body": "Caldo de porco com ovo cozido, cebolinha e nori. Primeira tentativa.",
+    "event_date": "2026-04-11T19:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Karaokê com amigos",
+    "body": "Noite de karaokê. Cantei clássicos dos anos 80.",
+    "event_date": "2026-04-12T22:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Espetinho de carne",
+    "body": "Espetinhos na churrasqueira portátil da varanda.",
+    "event_date": "2026-04-12T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Pintei quadro",
+    "body": "Experimentei pintura em aquarela. Relaxante demais.",
+    "event_date": "2026-04-12T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Corrida de 5km",
+    "body": "Participei da corrida beneficente. Tempo: 28 minutos.",
+    "event_date": "2026-04-13T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Granola caseira",
+    "body": "Preparei granola com aveia, castanhas e mel. Crocante!",
+    "event_date": "2026-04-13T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Arrumei gaveta de cabos",
+    "body": "Etiquetar e organizar cabos USB, HDMI e carregadores.",
+    "event_date": "2026-04-14T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Tech talk interno",
+    "body": "Apresentei sobre Clean Architecture para o time.",
+    "event_date": "2026-04-14T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bolo de cenoura",
+    "body": "Bolo de cenoura com cobertura de chocolate. Clássico brasileiro.",
+    "event_date": "2026-04-14T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Aula de natação",
+    "body": "Primeira aula de natação. Estilo crawl melhorando.",
+    "event_date": "2026-04-15T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião com investidor",
+    "body": "Pitch do projeto pessoal. Feedback construtivo recebido.",
+    "event_date": "2026-04-15T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Tapioca recheada",
+    "body": "Tapioca com queijo coalho e tomate seco. Lanche da tarde.",
+    "event_date": "2026-04-15T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Deploy em produção",
+    "body": "Release v2.0 sem incidentes. Monitoramento ok por 2h.",
+    "event_date": "2026-04-16T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Assisti documentário",
+    "body": "Documentário sobre oceanos. Imagens impressionantes.",
+    "event_date": "2026-04-16T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Hot dog gourmet",
+    "body": "Hot dog com cheddar, bacon crocante e cebola caramelizada.",
+    "event_date": "2026-04-16T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Jantar romântico",
+    "body": "Jantar à luz de velas no restaurante francês.",
+    "event_date": "2026-04-17T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Comprei monitor novo",
+    "body": "Monitor ultrawide 34 polegadas. Produtividade vai bombar!",
+    "event_date": "2026-04-17T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Escargot pela primeira vez",
+    "body": "Experimentei escargot no restaurante francês. Surpreendente!",
+    "event_date": "2026-04-17T20:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Release planning Q2",
+    "body": "Planejamento das entregas do segundo trimestre.",
+    "event_date": "2026-04-18T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Instalei o monitor novo",
+    "body": "Setup dual monitor configurado. Ergonomia ajustada.",
+    "event_date": "2026-04-18T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Burrito mexicano",
+    "body": "Burrito grande com carne, feijão, arroz e guacamole.",
+    "event_date": "2026-04-18T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Caminhada noturna",
+    "body": "Caminhei 3km à noite. Ar fresco e ruas calmas.",
+    "event_date": "2026-04-19T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Feira gastronômica",
+    "body": "Provei comidas de 10 países diferentes. Tailandesa foi a melhor.",
+    "event_date": "2026-04-19T12:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pad Thai",
+    "body": "Pad Thai autêntico na feira gastronômica. Sabor incrível.",
+    "event_date": "2026-04-19T13:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Brunch de domingo",
+    "body": "Brunch com amigos no café novo. Ovos beneditinos perfeitos.",
+    "event_date": "2026-04-20T10:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Montei estante nova",
+    "body": "Estante de livros montada. 2 horas de trabalho manual.",
+    "event_date": "2026-04-20T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Ovos beneditinos",
+    "body": "Ovos perfeitos com molho hollandaise. Receita do chef.",
+    "event_date": "2026-04-20T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Sessão de brainstorming",
+    "body": "Ideias para novo produto. Post-its por toda a parede.",
+    "event_date": "2026-04-21T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Meditação de 20 min",
+    "body": "Meditação mais longa. Foco na respiração profunda.",
+    "event_date": "2026-04-21T06:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Quiche de alho-poró",
+    "body": "Quiche caseira com massa folhada. Receita francesa.",
+    "event_date": "2026-04-21T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Café com ex-colega",
+    "body": "Reencontrei colega da faculdade. Muitas histórias pra contar.",
+    "event_date": "2026-04-22T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Testei app novo de finanças",
+    "body": "App de controle financeiro com IA. Interface muito boa.",
+    "event_date": "2026-04-22T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Cappuccino italiano",
+    "body": "Cappuccino perfeito com arte latte no café artesanal.",
+    "event_date": "2026-04-22T15:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Dia do programador",
+    "body": "Equipe celebrou com quiz de programação e prêmios.",
+    "event_date": "2026-04-23T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Terminei livro",
+    "body": "Finalizei 'Atomic Habits'. Muitas lições valiosas.",
+    "event_date": "2026-04-23T22:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Strogonoff de frango",
+    "body": "Strogonoff cremoso com arroz e batata palha. Comfort food.",
+    "event_date": "2026-04-23T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aula experimental de escalada",
+    "body": "Escalada indoor. Desafio físico e mental. Quero continuar.",
+    "event_date": "2026-04-24T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Configurei home office",
+    "body": "Ajustei iluminação, webcam e microfone. Setup profissional.",
+    "event_date": "2026-04-24T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Fish and chips",
+    "body": "Peixe empanado crocante com batata frita e molho tártaro.",
+    "event_date": "2026-04-24T12:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Open source contribution",
+    "body": "Primeiro PR aceito em projeto open source! React Native lib.",
+    "event_date": "2026-04-25T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz faxina no email",
+    "body": "Desinscrevi de 30+ newsletters. Inbox limpo finalmente.",
+    "event_date": "2026-04-25T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Empada de camarão",
+    "body": "Empadas artesanais da vizinha. Massa derrete na boca.",
+    "event_date": "2026-04-25T16:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Churrasco de aniversário",
+    "body": "Aniversário do Carlos. Picanha, cerveja e muita risada.",
+    "event_date": "2026-04-26T12:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Plantei suculentas",
+    "body": "Comprei 5 suculentas novas para a varanda.",
+    "event_date": "2026-04-26T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Picanha na brasa",
+    "body": "Picanha com sal grosso no ponto perfeito. Mal passada.",
+    "event_date": "2026-04-26T13:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Visita ao aquário",
+    "body": "Aquário municipal com tubarões e arraias. Fascinante.",
+    "event_date": "2026-04-27T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Organizei playlist",
+    "body": "Criei playlists separadas por mood: foco, treino, relaxar.",
+    "event_date": "2026-04-27T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Waffle belga",
+    "body": "Waffle com nutella, morango e chantilly. Sobremesa dos deuses.",
+    "event_date": "2026-04-27T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião all-hands",
+    "body": "CEO compartilhou resultados do trimestre. Empresa crescendo.",
+    "event_date": "2026-04-28T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Troquei capinha do celular",
+    "body": "Capinha nova transparente com proteção militar.",
+    "event_date": "2026-04-28T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Moqueca baiana",
+    "body": "Moqueca de peixe com leite de coco e dendê. Sabor do Nordeste.",
+    "event_date": "2026-04-28T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Workshop de liderança",
+    "body": "Treinamento sobre gestão de conflitos e feedback eficaz.",
+    "event_date": "2026-04-28T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Corri 10km",
+    "body": "Novo recorde pessoal: 10km em 52 minutos!",
+    "event_date": "2026-04-29T06:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Vitamina de banana",
+    "body": "Banana, aveia, mel e leite. Pré-treino natural.",
+    "event_date": "2026-04-29T06:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Happy hour de despedida",
+    "body": "Despedida da Ana que vai morar fora. Muita emoção.",
+    "event_date": "2026-04-29T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Troquei tênis de corrida",
+    "body": "Novo tênis com amortecimento extra. Pés agradecem.",
+    "event_date": "2026-04-29T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Coxinha de catupiry",
+    "body": "Melhor coxinha da cidade, no bar do Zé.",
+    "event_date": "2026-04-29T18:30:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Café com mentor",
+    "body": "Conversa sobre plano de carreira para os próximos 2 anos.",
+    "event_date": "2026-04-30T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Atualizei apps do celular",
+    "body": "Atualizei todos os apps e limpei cache. Celular mais rápido.",
+    "event_date": "2026-04-30T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bife à parmegiana",
+    "body": "Bife grande com queijo derretido e molho de tomate caseiro.",
+    "event_date": "2026-04-30T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião de retrospectiva",
+    "body": "Sprint review com time. Melhorias identificadas e celebradas.",
+    "event_date": "2026-04-30T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Comecei a aprender Go",
+    "body": "Primeira hora estudando Golang. Sintaxe limpa e rápida.",
+    "event_date": "2026-05-01T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Churrasco de Dia do Trabalho",
+    "body": "Feriado com churrasco na laje. Costela de 12 horas.",
+    "event_date": "2026-05-01T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Dia do Trabalho",
+    "body": "Feriado tranquilo com família e amigos próximos.",
+    "event_date": "2026-05-01T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Descanso merecido",
+    "body": "Dia inteiro de descanso. Netflix, sofá e pipoca.",
+    "event_date": "2026-05-01T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pipoca gourmet",
+    "body": "Pipoca com manteiga trufada e parmesão. Cinema em casa.",
+    "event_date": "2026-05-01T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Planejamento mensal",
+    "body": "Defini metas e prioridades para maio inteiro.",
+    "event_date": "2026-05-01T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Treino de chest day",
+    "body": "Supino, crossover e fly. Peito destruído. Bom treino.",
+    "event_date": "2026-03-04T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Vitamina verde",
+    "body": "Couve, banana, maçã e gengibre. Detox matinal.",
+    "event_date": "2026-03-05T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Lançamento do app interno",
+    "body": "App de ponto eletrônico lançado. Sem bugs no primeiro dia!",
+    "event_date": "2026-03-10T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Montei PC novo",
+    "body": "Montagem do PC gamer. Ryzen 7 + RTX 4070. Rodando tudo.",
+    "event_date": "2026-03-11T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Nhoque da nonna",
+    "body": "Nhoque de batata com molho bolonhesa. Receita italiana autêntica.",
+    "event_date": "2026-03-12T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Inauguração da cafeteria",
+    "body": "Cafeteria nova no bairro. Ambiente aconchegante e café excelente.",
+    "event_date": "2026-03-14T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz lista de metas do ano",
+    "body": "Revisei e ajustei metas pessoais e profissionais para 2026.",
+    "event_date": "2026-03-16T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Shakshuka",
+    "body": "Ovos pochê em molho de tomate temperado. Receita israelense.",
+    "event_date": "2026-03-17T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Hackday na empresa",
+    "body": "Dia dedicado a projetos experimentais. Fiz um chatbot.",
+    "event_date": "2026-03-19T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Assisti stand-up comedy",
+    "body": "Show de stand-up ao vivo. Ri até chorar.",
+    "event_date": "2026-03-20T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Fondue de queijo",
+    "body": "Fondue com pão italiano, brócolis e tomate cereja.",
+    "event_date": "2026-03-22T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião com parceiros",
+    "body": "Alinhamento estratégico com empresas parceiras.",
+    "event_date": "2026-03-25T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Troquei colchão",
+    "body": "Colchão novo de mola ensacada. Primeira noite: sono perfeito.",
+    "event_date": "2026-03-25T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Acarajé baiano",
+    "body": "Acarajé com vatapá e camarão seco. Sabor do nordeste.",
+    "event_date": "2026-03-28T17:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Dia de mudança de mesa",
+    "body": "Troquei de lugar no escritório. Vista da janela agora!",
+    "event_date": "2026-03-30T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Doei sangue",
+    "body": "Doação de sangue no hemocentro. Gesto simples que salva vidas.",
+    "event_date": "2026-04-01T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Cachorro-quente completo",
+    "body": "Cachorro-quente com purê, milho, ervilha e batata palha.",
+    "event_date": "2026-04-03T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aula de dança de salão",
+    "body": "Primeira aula de forró. Pisando no pé do parceiro, mas divertido!",
+    "event_date": "2026-04-05T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz seguro do carro",
+    "body": "Renovei seguro automotivo com cobertura completa.",
+    "event_date": "2026-04-07T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Pão de mel",
+    "body": "Pão de mel coberto com chocolate. Docinho perfeito pro café.",
+    "event_date": "2026-04-09T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Palestra sobre carreira em tech",
+    "body": "Palestrante contou trajetória de dev júnior a CTO.",
+    "event_date": "2026-04-11T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Consertei torneira",
+    "body": "Aprendi pelo YouTube e consertei sozinho. Economia e satisfação.",
+    "event_date": "2026-04-13T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bruschetta italiana",
+    "body": "Pão italiano torrado com tomate, manjericão e azeite.",
+    "event_date": "2026-04-15T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Aniversário do sobrinho",
+    "body": "Festa com tema de dinossauros. Crianças adoraram!",
+    "event_date": "2026-04-17T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Cancelei assinaturas desnecessárias",
+    "body": "Cancelei 3 assinaturas que não usava. Economia de R$150/mês.",
+    "event_date": "2026-04-19T10:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Torresmo crocante",
+    "body": "Torresmo sequinho e crocante de aperitivo. Irresistível.",
+    "event_date": "2026-04-20T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Noite de jogos de tabuleiro",
+    "body": "Jogamos Catan, Ticket to Ride e Dixit. Noite incrível.",
+    "event_date": "2026-04-22T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Agendei viagem de férias",
+    "body": "Passagens compradas para praia em julho. Mal posso esperar!",
+    "event_date": "2026-04-24T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Queijo coalho na brasa",
+    "body": "Queijo coalho grelhado com melado de cana. Combo nordestino.",
+    "event_date": "2026-04-26T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Mutirão de limpeza do bairro",
+    "body": "Vizinhos unidos limpando praça e canteiros. Comunidade unida.",
+    "event_date": "2026-04-27T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz revisão do carro",
+    "body": "Troca de óleo, filtros e alinhamento. Carro rodando suave.",
+    "event_date": "2026-04-30T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Lanche natural completo",
+    "body": "Pão 7 grãos com patê de atum, cenoura ralada e alface.",
+    "event_date": "2026-04-08T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Apresentação de TCC",
+    "body": "Ajudei primo a ensaiar apresentação de TCC. Ele arrasou!",
+    "event_date": "2026-04-10T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Fiz detox digital",
+    "body": "Dia inteiro sem redes sociais. Li livro e cozinhei. Paz.",
+    "event_date": "2026-04-12T08:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Dadinhos de tapioca",
+    "body": "Dadinhos crocantes com geleia de pimenta. Entrada perfeita.",
+    "event_date": "2026-04-14T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Sessão de fotos profissional",
+    "body": "Fotos para LinkedIn e site pessoal. Resultado ficou ótimo.",
+    "event_date": "2026-04-16T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Comecei bullet journal",
+    "body": "Montei layout do mês em bullet journal. Organização visual.",
+    "event_date": "2026-04-18T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Creme brûlée",
+    "body": "Creme brûlée com casquinha de caramelo crocante. Sobremesa francesa.",
+    "event_date": "2026-04-20T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Dia de voluntariado tech",
+    "body": "Ensinei programação básica para adolescentes na ONG.",
+    "event_date": "2026-04-22T09:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Troquei travesseiro",
+    "body": "Travesseiro de memory foam. Noite muito mais confortável.",
+    "event_date": "2026-04-24T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Caldo de cana",
+    "body": "Caldo de cana com pastel de queijo na feira. Combinação clássica.",
+    "event_date": "2026-04-26T11:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Reunião de pais na escola",
+    "body": "Acompanhei irmã na reunião. Sobrinha tirando boas notas.",
+    "event_date": "2026-04-28T19:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Reorganizei bookmarks",
+    "body": "Organizei favoritos do navegador em pastas temáticas.",
+    "event_date": "2026-04-30T20:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Mingau de aveia",
+    "body": "Mingau com canela, mel e banana. Café da manhã confortante.",
+    "event_date": "2026-03-03T07:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Entrega do projeto X",
+    "body": "Marco importante: projeto entregue no prazo e com qualidade.",
+    "event_date": "2026-03-09T15:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Resolvi pendência bancária",
+    "body": "Finalmente resolvi aquela cobrança indevida. Estornado!",
+    "event_date": "2026-03-13T14:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Comida árabe",
+    "body": "Esfiha, quibe e homus no restaurante sírio. Tudo delicioso.",
+    "event_date": "2026-03-18T12:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Show de MPB",
+    "body": "Show ao vivo de MPB no teatro. Repertório emocionante.",
+    "event_date": "2026-03-23T21:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "personal",
+    "title": "Testei novo editor de código",
+    "body": "Experimentei Zed editor. Rápido mas faltam extensões.",
+    "event_date": "2026-03-29T16:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "food",
+    "title": "Bolinho de bacalhau",
+    "body": "Bolinhos crocantes por fora e macios por dentro. Receita portuguesa.",
+    "event_date": "2026-04-02T18:00:00",
+    "photo_urls": []
+  },
+  {
+    "user_id": "162d34cd-a209-4c92-8a91-1566be5952e8",
+    "category": "event",
+    "title": "Ensaio fotográfico urbano",
+    "body": "Fotos de rua em preto e branco. Experimentando novo estilo.",
+    "event_date": "2026-04-06T16:00:00",
+    "photo_urls": [
+      "https://images.unsplash.com/photo-1755398105315-a124a12152da?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
+  }
+]

@@ -1,0 +1,77 @@
+name: "🐛 Bug Report"
+description: "Reportar um problema ou comportamento inesperado"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar esse bug! Preencha as informações abaixo para nos ajudar a reproduzir e corrigir o problema.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Uma descrição clara do que aconteceu.
+      placeholder: "Descreva o comportamento inesperado..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Como podemos reproduzir esse bug?
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que você esperava que acontecesse?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Plataforma
+      options:
+        - Android (Expo Go)
+        - Android (APK)
+        - Web (Browser)
+        - iOS
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Dispositivo / Navegador
+      description: "Ex: Pixel 7, Samsung Galaxy S23, Chrome 125"
+      placeholder: "Pixel 7 / Chrome 125"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Logs
+      description: Se aplicável, adicione screenshots ou logs de erro do console.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Área do app afetada
+      options:
+        - Autenticação (Login/Register)
+        - Timeline (Home)
+        - Calendário
+        - Novo Registro
+        - Upload de Fotos
+        - Perfil
+        - Navegação
+        - Outro

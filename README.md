@@ -1,3 +1,5 @@
+[![AI Ready](https://img.shields.io/badge/AI--Ready-yes-brightgreen?style=flat)](https://github.com/johnpapa/ai-ready)
+
 # 📓 Life Journal
 
 Diário pessoal mobile com foco em progresso e histórico. Registre acontecimentos do dia a dia organizados por categorias, com timeline diária, visão por calendário e experiência visual premium.
@@ -201,3 +203,17 @@ Rotas (app/) → Screens → Hooks → Services → Supabase
 - **Web compat**: `expo-secure-store` → `localStorage` na web; `Alert.alert` → `alert()`/`confirm()`; `<input type="date/time">` para DateInput/TimeInput
 - **ImageCarousel**: State-driven (não scroll-based) para compatibilidade web
 - **Supabase local**: `db reset` apaga usuários auth — re-registrar após cada reset
+
+## Contributing
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Fork o repositório
+2. Crie uma branch: `git checkout -b feat/minha-feature`
+3. Instale dependências: `npm install`
+4. Inicie o Supabase local: `npx supabase start && npx supabase db reset`
+5. Rode o app: `npx expo start`
+6. Verifique os tipos: `npx tsc --noEmit`
+7. Abra um Pull Request
+
+Para entender a arquitetura e convenções do projeto, consulte o [AGENTS.md](AGENTS.md) e as [instruções do Copilot](.github/copilot-instructions.md).
