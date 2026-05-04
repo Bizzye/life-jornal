@@ -1,12 +1,13 @@
 import { useAuthInit } from '@/hooks/useAuth';
 import { useProtectedRoute } from '@/hooks/useProtectedRoute';
 import config from '@/theme/tamagui.config';
+import { Toaster } from '@tamagui/v2-toast';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { TamaguiProvider } from 'tamagui';
+import { PortalProvider, TamaguiProvider } from 'tamagui';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -34,7 +35,10 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <TamaguiProvider config={config} defaultTheme="dark">
-        <RootNav />
+        <PortalProvider shouldAddRootHost>
+          <Toaster />
+          <RootNav />
+        </PortalProvider>
       </TamaguiProvider>
     </GestureHandlerRootView>
   );
@@ -49,6 +53,9 @@ function RootNav() {
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="registro/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="categories" options={{ headerShown: false }} />
+      <Stack.Screen name="edit-profile" options={{ headerShown: false }} />
+      <Stack.Screen name="change-password" options={{ headerShown: false }} />
     </Stack>
   );
 }

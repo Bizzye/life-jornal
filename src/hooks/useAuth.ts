@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useAuthStore } from "@/stores/auth.store";
-import { authService } from "@/services/auth.service";
-import type { LoginInput, RegisterInput } from "@/schemas/auth.schema";
+import type { LoginInput, ProfileInput, RegisterInput } from '@/schemas/auth.schema';
+import { authService } from '@/services/auth.service';
+import { useAuthStore } from '@/stores/auth.store';
+import { useEffect } from 'react';
 
 /**
  * Inicializa a sessão uma única vez no root layout.
@@ -17,7 +17,9 @@ export function useAuthInit() {
         setUser({
           id: s.user.id,
           email: s.user.email!,
-          name: s.user.user_metadata?.name ?? "",
+          name: s.user.user_metadata?.name ?? '',
+          avatar_url: s.user.user_metadata?.avatar_url ?? null,
+          birthday: s.user.user_metadata?.birthday ?? null,
         });
       }
       setLoading(false);
@@ -29,7 +31,9 @@ export function useAuthInit() {
         setUser({
           id: s.user.id,
           email: s.user.email!,
-          name: s.user.user_metadata?.name ?? "",
+          name: s.user.user_metadata?.name ?? '',
+          avatar_url: s.user.user_metadata?.avatar_url ?? null,
+          birthday: s.user.user_metadata?.birthday ?? null,
         });
       } else {
         reset();
@@ -66,5 +70,17 @@ export function useAuth() {
     reset();
   };
 
-  return { user, session, loading, login, register, logout };
+  const updateProfile = async (input: ProfileInput) => {
+    await authService.updateProfile(input);
+    if (user) {
+      useAuthStore.getState().setUser({
+        ...user,
+        name: input.name,
+        birthday: input.birthday ?? null,
+        avatar_url: input.avatar_url ?? null,
+      });
+    }
+  };
+
+  return { user, session, loading, login, register, logout, updateProfile };
 }

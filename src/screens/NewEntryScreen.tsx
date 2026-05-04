@@ -1,10 +1,12 @@
-import { EntryForm } from "@/components/entry/EntryForm";
-import { ScreenContainer } from "@/components/layout/ScreenContainer";
-import { useEntries } from "@/hooks/useEntries";
-import type { EntryInput } from "@/schemas/entry.schema";
-import { useRouter } from "expo-router";
-import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
-import { Text } from "tamagui";
+import { RegistroForm } from '@/components/entry/RegistroForm';
+import { ScreenContainer } from '@/components/layout/ScreenContainer';
+import { useEntries } from '@/hooks/useEntries';
+import { friendlyError } from '@/lib/errorMessages';
+import type { EntryInput } from '@/schemas/entry.schema';
+import { toast } from '@tamagui/v2-toast';
+import { useRouter } from 'expo-router';
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { Text } from 'tamagui';
 
 export function NewEntryScreen() {
   const { create } = useEntries();
@@ -14,8 +16,8 @@ export function NewEntryScreen() {
     try {
       await create(data);
       router.back();
-    } catch (err: any) {
-      alert(err.message ?? "Falha ao salvar");
+    } catch (err) {
+      toast.error(friendlyError(err, 'Falha ao salvar'));
     }
   };
 
@@ -23,8 +25,8 @@ export function NewEntryScreen() {
     <ScreenContainer>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
       >
         <ScrollView
           contentContainerStyle={{ paddingBottom: 40 }}
@@ -34,7 +36,7 @@ export function NewEntryScreen() {
           <Text color="$color" fontSize="$6" fontWeight="700" marginBottom="$4">
             Novo Registro ✍️
           </Text>
-          <EntryForm onSubmit={handleSubmit} />
+          <RegistroForm onSubmit={handleSubmit} />
         </ScrollView>
       </KeyboardAvoidingView>
     </ScreenContainer>

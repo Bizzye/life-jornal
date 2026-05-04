@@ -10,40 +10,56 @@ import { useImagePicker } from '@/hooks/useImagePicker';
 import { nowTime, todayISO } from '@/lib/utils';
 import { entrySchema, type EntryInput } from '@/schemas/entry.schema';
 import { useCategoryStore } from '@/stores/category.store';
-import type { CustomFieldValues } from '@/types';
+import type { CustomFieldValues, Registro } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createElement, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { View } from 'react-native';
-import { Text, YStack } from 'tamagui';
+import { Text, XStack, YStack } from 'tamagui';
 
-interface EntryFormProps {
+interface RegistroFormProps {
+  /** Existing registro for edit mode. Omit for create mode. */
+  registro?: Registro;
   onSubmit: (data: EntryInput) => Promise<void>;
   loading?: boolean;
+  submitLabel?: string;
 }
 
-export function EntryForm({ onSubmit, loading }: EntryFormProps) {
+export function RegistroForm({ registro, onSubmit, loading, submitLabel }: RegistroFormProps) {
   const { pickAndUpload, uploading } = useImagePicker();
-  const [photoUrls, setPhotoUrls] = useState<string[]>([]);
-  const [customFieldValues, setCustomFieldValues] = useState<CustomFieldValues>({});
   const categories = useCategoryStore((s) => s.categories);
+
+  const [photoUrls, setPhotoUrls] = useState<string[]>(registro?.photo_urls ?? []);
+  const [customFieldValues, setCustomFieldValues] = useState<CustomFieldValues>(
+    registro?.custom_field_values ?? {},
+  );
 
   const categoryOptions = useMemo(
     () =>
       categories.map((cat) => ({
         label: cat.name,
         value: cat.id,
-        icon: createElement(View, {
-          style: {
-            width: 14,
-            height: 14,
-            borderRadius: 7,
-            backgroundColor: cat.color,
-          },
-        }),
+        icon: (
+          <View
+            style={{
+              width: 14,
+              height: 14,
+              borderRadius: 7,
+              backgroundColor: cat.color,
+            }}
+          />
+        ),
       })),
     [categories],
   );
+
+  const defaultEventTime = registro?.event_date
+    ? new Date(registro.event_date).toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      })
+    : nowTime();
 
   const {
     control,
@@ -55,12 +71,12 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
   } = useForm<EntryInput>({
     resolver: zodResolver(entrySchema),
     defaultValues: {
-      category_id: categories[0]?.id ?? '',
-      subcategory_id: undefined,
-      title: '',
-      body: '',
-      event_date: todayISO(),
-      event_time: nowTime(),
+      category_id: registro?.category_id ?? categories[0]?.id ?? '',
+      subcategory_id: registro?.subcategory_id ?? undefined,
+      title: registro?.title ?? '',
+      body: registro?.body ?? '',
+      event_date: registro?.event_date?.split('T')[0] ?? todayISO(),
+      event_time: defaultEventTime,
     },
   });
 
@@ -77,10 +93,10 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
 
   const customFields = selectedCategory?.custom_fields ?? [];
 
-  // Reset custom field values when category changes
+  // Reset custom field values when category changes (keep values for same category in edit mode)
   const prevCategoryIdRef = useState(selectedCategoryId)[0];
   useEffect(() => {
-    if (selectedCategoryId !== prevCategoryIdRef) {
+    if (selectedCategoryId !== prevCategoryIdRef && !registro) {
       setCustomFieldValues({});
     }
   }, [selectedCategoryId]);
@@ -97,16 +113,30 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
 
   const handleFormSubmit = async (data: EntryInput) => {
     await onSubmit({ ...data, photo_urls: photoUrls, custom_field_values: customFieldValues });
-    reset();
-    setPhotoUrls([]);
-    setCustomFieldValues({});
+    if (!registro) {
+      reset();
+      setPhotoUrls([]);
+      setCustomFieldValues({});
+    }
   };
 
+  const isSubmitting = loading || uploading;
+  const title = watch('title');
+  const canSubmit = !isSubmitting && !!title?.trim();
+
   return (
-    <YStack gap="$3">
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Categoria
-      </Text>
+    <YStack gap="$4">
+      {/* Photos — always on top like the detail edit screen */}
+      {photoUrls.length > 0 && (
+        <ImageCarousel images={photoUrls} editable onRemove={handleRemoveImage} />
+      )}
+      {photoUrls.length < 3 && (
+        <Button variant="secondary" onPress={handlePickImage} disabled={uploading}>
+          {uploading ? 'Enviando...' : 'Adicionar foto'}
+        </Button>
+      )}
+
+      {/* Category */}
       <Controller
         control={control}
         name="category_id"
@@ -128,67 +158,28 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
         </Text>
       )}
 
+      {/* Subcategory */}
       {subcategoryOptions.length > 0 && (
-        <>
-          <Text color="$color" fontSize="$2" fontWeight="500">
-            Subcategoria (opcional)
-          </Text>
-          <Controller
-            control={control}
-            name="subcategory_id"
-            render={({ field: { value, onChange } }) => (
-              <Select
-                value={value ?? ''}
-                onValueChange={onChange}
-                placeholder="Selecione a subcategoria"
-                options={subcategoryOptions}
-              />
-            )}
-          />
-        </>
+        <Controller
+          control={control}
+          name="subcategory_id"
+          render={({ field: { value, onChange } }) => (
+            <Select
+              value={value ?? ''}
+              onValueChange={onChange}
+              placeholder="Subcategoria (opcional)"
+              options={subcategoryOptions}
+            />
+          )}
+        />
       )}
 
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Data do evento
-      </Text>
-      <Controller
-        control={control}
-        name="event_date"
-        render={({ field: { value, onChange } }) => <DateInput value={value} onChange={onChange} />}
-      />
-      {errors.event_date && (
-        <Text color="$error" fontSize="$1">
-          {errors.event_date.message}
-        </Text>
-      )}
-
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Hora do evento
-      </Text>
-      <Controller
-        control={control}
-        name="event_time"
-        render={({ field: { value, onChange } }) => <TimeInput value={value} onChange={onChange} />}
-      />
-      {errors.event_time && (
-        <Text color="$error" fontSize="$1">
-          {errors.event_time.message}
-        </Text>
-      )}
-
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Título
-      </Text>
+      {/* Title */}
       <Controller
         control={control}
         name="title"
         render={({ field: { value, onChange, onBlur } }) => (
-          <Input
-            placeholder="O que aconteceu?"
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-          />
+          <Input placeholder="Título" value={value} onChangeText={onChange} onBlur={onBlur} />
         )}
       />
       {errors.title && (
@@ -197,15 +188,35 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
         </Text>
       )}
 
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Descrição (opcional)
-      </Text>
+      {/* Date & Time — side by side */}
+      <XStack gap="$3">
+        <YStack flex={1}>
+          <Controller
+            control={control}
+            name="event_date"
+            render={({ field: { value, onChange } }) => (
+              <DateInput value={value} onChange={onChange} />
+            )}
+          />
+        </YStack>
+        <YStack flex={1}>
+          <Controller
+            control={control}
+            name="event_time"
+            render={({ field: { value, onChange } }) => (
+              <TimeInput value={value} onChange={onChange} />
+            )}
+          />
+        </YStack>
+      </XStack>
+
+      {/* Body */}
       <Controller
         control={control}
         name="body"
         render={({ field: { value, onChange, onBlur } }) => (
           <TextArea
-            placeholder="Conte mais detalhes..."
+            placeholder="Descrição (opcional)"
             value={value ?? ''}
             onChangeText={onChange}
             onBlur={onBlur}
@@ -236,25 +247,11 @@ export function EntryForm({ onSubmit, loading }: EntryFormProps) {
         </YStack>
       )}
 
-      <Text color="$color" fontSize="$2" fontWeight="500">
-        Fotos (até 3)
-      </Text>
-      {photoUrls.length > 0 && (
-        <ImageCarousel images={photoUrls} editable onRemove={handleRemoveImage} />
-      )}
-      {photoUrls.length < 3 && (
-        <Button variant="secondary" onPress={handlePickImage} disabled={uploading}>
-          {uploading ? 'Enviando...' : `📷 Adicionar foto (${photoUrls.length}/3)`}
-        </Button>
-      )}
-
-      <Button
-        variant="primary"
-        onPress={handleSubmit(handleFormSubmit)}
-        disabled={loading || uploading}
-        marginTop="$2"
-      >
-        {loading ? 'Salvando...' : 'Salvar Registro'}
+      {/* Submit */}
+      <Button onPress={handleSubmit(handleFormSubmit)} disabled={!canSubmit}>
+        {isSubmitting
+          ? 'Salvando...'
+          : (submitLabel ?? (registro ? 'Salvar alterações' : 'Salvar Registro'))}
       </Button>
     </YStack>
   );

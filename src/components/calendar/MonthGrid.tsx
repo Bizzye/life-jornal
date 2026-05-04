@@ -1,11 +1,12 @@
-import type { DaySummary } from "@/hooks/useCalendarEntries";
-import { colors } from "@/theme/tokens";
-import React, { useMemo } from "react";
-import { StyleSheet, View } from "react-native";
-import { Text, XStack } from "tamagui";
-import { DayCell } from "./DayCell";
+import type { DaySummary } from '@/hooks/useCalendarEntries';
+import { colors } from '@/theme/tokens';
+import React, { useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Text, XStack } from 'tamagui';
+import { DayCell } from './DayCell';
 
-const WEEKDAYS = ["S", "T", "Q", "Q", "S", "S", "D"];
+const WEEKDAYS = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
+const WEEKEND = new Set([5, 6]); // Sáb, Dom (0-indexed in WEEKDAYS)
 
 interface MonthGridProps {
   currentMonth: Date;
@@ -26,10 +27,7 @@ function getDaysForMonth(month: Date) {
   const daysInPrevMonth = new Date(year, m, 0).getDate();
 
   const today = new Date();
-  const todayKey =
-    today.getFullYear() === year && today.getMonth() === m
-      ? today.getDate()
-      : -1;
+  const todayKey = today.getFullYear() === year && today.getMonth() === m ? today.getDate() : -1;
 
   const cells: {
     day: number;
@@ -79,8 +77,8 @@ function getDaysForMonth(month: Date) {
 
 function toDateKey(date: Date): string {
   const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
   return `${y}-${m}-${d}`;
 }
 
@@ -98,15 +96,15 @@ export function MonthGrid({
   }
 
   return (
-    <View>
-      <XStack justifyContent="space-around" marginBottom="$2">
+    <View style={styles.container}>
+      <XStack justifyContent="space-around" marginBottom="$2" paddingHorizontal={2}>
         {WEEKDAYS.map((label, i) => (
           <Text
             key={i}
-            color={colors.textMuted}
+            color={WEEKEND.has(i) ? 'rgba(245,240,232,0.25)' : colors.textMuted}
             fontSize={12}
             fontWeight="600"
-            width={44}
+            width={42}
             textAlign="center"
           >
             {label}
@@ -139,9 +137,15 @@ export function MonthGrid({
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderRadius: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 4,
+  },
   row: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginBottom: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 2,
   },
 });

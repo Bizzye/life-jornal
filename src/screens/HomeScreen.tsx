@@ -1,23 +1,24 @@
 import { EntryCard } from '@/components/entry/EntryCard';
 import { Header } from '@/components/layout/Header';
 import { ScreenContainer } from '@/components/layout/ScreenContainer';
-import { Chip } from '@/components/ui/Chip';
 import { FAB } from '@/components/ui/FAB';
 import { LoadingOverlay } from '@/components/ui/LoadingOverlay';
 import { useAuth } from '@/hooks/useAuth';
 import { useEntries } from '@/hooks/useEntries';
-import { CATEGORY_CONFIG } from '@/lib/constants';
-import { formatDate, formatDayHeader, getCategoryColor, todayISO } from '@/lib/utils';
-import type { Category, Registro } from '@/types';
+import { formatDate, formatDayHeader, todayISO } from '@/lib/utils';
+import { useCategoryStore } from '@/stores/category.store';
+import type { Registro } from '@/types';
 import { useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { ActivityIndicator, SectionList } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  ScrollView,
+  SectionList,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { Text, XStack, YStack } from 'tamagui';
-
-const allCategories = Object.entries(CATEGORY_CONFIG) as [
-  Category,
-  (typeof CATEGORY_CONFIG)[Category],
-][];
 
 function groupByDay(registros: Registro[]) {
   const map = new Map<string, Registro[]>();
@@ -35,9 +36,10 @@ export function HomeScreen() {
   const { user } = useAuth();
   const [filter, setFilter] = useState<string | undefined>();
   const { entries, loading, hasMore, loadMore } = useEntries({
-    category: filter,
+    category_id: filter,
   });
   const router = useRouter();
+  const storeCategories = useCategoryStore((s) => s.categories);
 
   const sections = useMemo(() => groupByDay(entries), [entries]);
 
@@ -52,32 +54,62 @@ export function HomeScreen() {
             <Text color="$textSecondary" fontSize="$2" marginBottom="$3">
               {formatDate(todayISO())}
             </Text>
-            <XStack gap="$2" flexWrap="wrap">
-              <Chip
-                label="Todos"
-                color="#666"
-                selected={!filter}
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={chipStyles.scroll}
+            >
+              <Pressable
                 onPress={() => setFilter(undefined)}
-              />
-              {allCategories.map(([key, cfg]) => (
-                <Chip
-                  key={key}
-                  label={cfg.label}
-                  icon={
-                    <cfg.icon size={14} color={filter === key ? '#fff' : 'rgba(245,240,232,0.6)'} />
-                  }
-                  color={getCategoryColor(key)}
-                  selected={filter === key}
-                  onPress={() => setFilter(filter === key ? undefined : key)}
-                />
-              ))}
-            </XStack>
+                style={[chipStyles.chip, !filter && chipStyles.chipAllSelected]}
+              >
+                <Text
+                  color={!filter ? '#fff' : 'rgba(245,240,232,0.6)'}
+                  fontSize={13}
+                  fontWeight="600"
+                >
+                  Todos
+                </Text>
+              </Pressable>
+              {storeCategories.map((cat) => {
+                const isSelected = filter === cat.id;
+                return (
+                  <Pressable
+                    key={cat.id}
+                    onPress={() => setFilter(isSelected ? undefined : cat.id)}
+                    style={[
+                      chipStyles.chip,
+                      isSelected && { backgroundColor: cat.color, borderColor: cat.color },
+                    ]}
+                  >
+                    <View
+                      style={[chipStyles.dot, { backgroundColor: isSelected ? '#fff' : cat.color }]}
+                    />
+                    <Text
+                      color={isSelected ? '#fff' : 'rgba(245,240,232,0.6)'}
+                      fontSize={13}
+                      fontWeight={isSelected ? '600' : '500'}
+                    >
+                      {cat.name}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
           </YStack>
         }
-        renderSectionHeader={({ section: { title } }) => (
-          <Text color="$accent" fontSize="$3" fontWeight="700" marginTop="$4" marginBottom="$2">
-            {formatDayHeader(title)}
-          </Text>
+        renderSectionHeader={({ section: { title, data } }) => (
+          <XStack alignItems="center" gap="$2" marginTop="$5" marginBottom="$3" paddingBottom="$2">
+            <View style={daySeparator.badge}>
+              <Text color="#fff" fontSize={13} fontWeight="700">
+                {formatDayHeader(title)}
+              </Text>
+            </View>
+            <Text color="$textMuted" fontSize={12}>
+              {data.length} {data.length === 1 ? 'registro' : 'registros'}
+            </Text>
+            <View style={daySeparator.line} />
+          </XStack>
         )}
         renderItem={({ item }) => (
           <EntryCard registro={item} onPress={() => router.push(`/registro/${item.id}` as any)} />
@@ -118,3 +150,44 @@ export function HomeScreen() {
     </ScreenContainer>
   );
 }
+
+const chipStyles = StyleSheet.create({
+  scroll: {
+    gap: 8,
+    paddingRight: 4,
+  },
+  chip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.06)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
+  },
+  chipAllSelected: {
+    backgroundColor: 'rgba(245,240,232,0.15)',
+    borderColor: 'rgba(245,240,232,0.25)',
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
+});
+
+const daySeparator = StyleSheet.create({
+  badge: {
+    backgroundColor: 'rgba(224,138,56,0.15)',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  line: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+  },
+});

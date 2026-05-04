@@ -1,11 +1,11 @@
-import type { DaySummary } from "@/hooks/useCalendarEntries";
-import { colors } from "@/theme/tokens";
-import { ChevronLeft, ChevronRight, Grid3X3 } from "lucide-react-native";
-import React, { useMemo } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
-import { Text, XStack } from "tamagui";
+import type { DaySummary } from '@/hooks/useCalendarEntries';
+import { colors } from '@/theme/tokens';
+import { ChevronLeft, ChevronRight, Grid3X3 } from 'lucide-react-native';
+import React, { useMemo } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text, XStack } from 'tamagui';
 
-const WEEKDAY_LABELS = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
+const WEEKDAY_LABELS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 const CELL_SIZE = 46;
 
 interface WeekStripProps {
@@ -18,13 +18,13 @@ interface WeekStripProps {
 
 function toDateKey(date: Date): string {
   const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
   return `${y}-${m}-${d}`;
 }
 
 function getWeekDays(dateKey: string) {
-  const date = new Date(dateKey + "T12:00:00");
+  const date = new Date(dateKey + 'T12:00:00');
   let dow = date.getDay() - 1;
   if (dow < 0) dow = 6;
 
@@ -50,7 +50,7 @@ function getWeekDays(dateKey: string) {
 }
 
 function shiftWeek(dateKey: string, offset: number): string {
-  const date = new Date(dateKey + "T12:00:00");
+  const date = new Date(dateKey + 'T12:00:00');
   date.setDate(date.getDate() + offset * 7);
   return toDateKey(date);
 }
@@ -58,24 +58,24 @@ function shiftWeek(dateKey: string, offset: number): string {
 function getWeekRangeLabel(cells: ReturnType<typeof getWeekDays>): string {
   const first = cells[0];
   const last = cells[cells.length - 1];
-  const fDate = new Date(first.dateKey + "T12:00:00");
-  const lDate = new Date(last.dateKey + "T12:00:00");
+  const fDate = new Date(first.dateKey + 'T12:00:00');
+  const lDate = new Date(last.dateKey + 'T12:00:00');
   const fDay = first.day;
   const lDay = last.day;
 
   const months = [
-    "jan",
-    "fev",
-    "mar",
-    "abr",
-    "mai",
-    "jun",
-    "jul",
-    "ago",
-    "set",
-    "out",
-    "nov",
-    "dez",
+    'jan',
+    'fev',
+    'mar',
+    'abr',
+    'mai',
+    'jun',
+    'jul',
+    'ago',
+    'set',
+    'out',
+    'nov',
+    'dez',
   ];
 
   if (fDate.getMonth() === lDate.getMonth()) {
@@ -97,20 +97,21 @@ export function WeekStrip({
   return (
     <View style={styles.container}>
       {/* Week range + navigation */}
-      <XStack
-        justifyContent="space-between"
-        alignItems="center"
-        marginBottom={12}
-      >
+      <XStack justifyContent="space-between" alignItems="center" marginBottom={14}>
         <Pressable
           onPress={() => onWeekChange(shiftWeek(selectedDate, -1))}
           hitSlop={12}
           style={styles.navButton}
         >
-          <ChevronLeft size={20} color={colors.textSecondary} />
+          <ChevronLeft size={18} color={colors.textSecondary} />
         </Pressable>
 
-        <Text color={colors.textSecondary} fontSize={14} fontWeight="600">
+        <Text
+          color={colors.textSecondary}
+          fontSize={13}
+          fontWeight="600"
+          textTransform="capitalize"
+        >
           {rangeLabel}
         </Text>
 
@@ -119,61 +120,14 @@ export function WeekStrip({
           hitSlop={12}
           style={styles.navButton}
         >
-          <ChevronRight size={20} color={colors.textSecondary} />
+          <ChevronRight size={18} color={colors.textSecondary} />
         </Pressable>
       </XStack>
 
-      {/* Date numbers row */}
-      <XStack justifyContent="space-around" marginBottom={2}>
+      {/* Day cells */}
+      <XStack justifyContent="space-around" marginBottom={6}>
         {cells.map((cell) => {
           const isActive = cell.dateKey === selectedDate;
-          return (
-            <Pressable
-              key={cell.dateKey + "-num"}
-              onPress={() => onDayPress(cell.dateKey)}
-              style={{ width: CELL_SIZE, alignItems: "center" }}
-            >
-              <Text
-                color={
-                  isActive
-                    ? colors.accent
-                    : cell.isToday
-                      ? colors.accent
-                      : colors.textPrimary
-                }
-                fontSize={20}
-                fontWeight={isActive || cell.isToday ? "800" : "500"}
-              >
-                {cell.day}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </XStack>
-
-      {/* Weekday labels */}
-      <XStack justifyContent="space-around" marginBottom={8}>
-        {WEEKDAY_LABELS.map((label, i) => (
-          <Text
-            key={i}
-            color={
-              cells[i]?.dateKey === selectedDate
-                ? colors.accent
-                : colors.textMuted
-            }
-            fontSize={11}
-            fontWeight="600"
-            width={CELL_SIZE}
-            textAlign="center"
-          >
-            {label}
-          </Text>
-        ))}
-      </XStack>
-
-      {/* Activity rings row */}
-      <View style={styles.row}>
-        {cells.map((cell) => {
           const summary = daySummaries.get(cell.dateKey);
           const count = summary?.count ?? 0;
           return (
@@ -181,21 +135,45 @@ export function WeekStrip({
               key={cell.dateKey}
               onPress={() => onDayPress(cell.dateKey)}
               style={[
-                styles.ringCell,
-                cell.dateKey === selectedDate && styles.ringCellSelected,
+                styles.dayCell,
+                isActive && styles.dayCellActive,
+                cell.isToday && !isActive && styles.dayCellToday,
               ]}
             >
-              {count > 0 && <View style={styles.dotIndicator} />}
+              <Text
+                color={isActive ? 'rgba(255,255,255,0.6)' : colors.textMuted}
+                fontSize={10}
+                fontWeight="600"
+              >
+                {WEEKDAY_LABELS[cells.indexOf(cell)]}
+              </Text>
+              <Text
+                color={isActive ? '#fff' : cell.isToday ? colors.accent : colors.textPrimary}
+                fontSize={18}
+                fontWeight={isActive || cell.isToday ? '700' : '500'}
+              >
+                {cell.day}
+              </Text>
+              {count > 0 && (
+                <View
+                  style={[
+                    styles.dotIndicator,
+                    {
+                      backgroundColor: isActive ? 'rgba(255,255,255,0.7)' : colors.accent,
+                    },
+                  ]}
+                />
+              )}
             </Pressable>
           );
         })}
-      </View>
+      </XStack>
 
       {/* Expand to month */}
       <Pressable onPress={onExpandPress} style={styles.expandButton}>
-        <Grid3X3 size={14} color={colors.textMuted} />
+        <Grid3X3 size={13} color={colors.textMuted} />
         <Text color={colors.textMuted} fontSize={11} fontWeight="500">
-          Ver mês
+          Ver mês completo
         </Text>
       </Pressable>
     </View>
@@ -204,42 +182,41 @@ export function WeekStrip({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
+    backgroundColor: 'rgba(255,255,255,0.03)',
     borderRadius: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 4,
+    paddingVertical: 14,
+    paddingHorizontal: 8,
     marginBottom: 4,
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  ringCell: {
-    width: CELL_SIZE,
-    height: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ringCellSelected: {
-    opacity: 1,
-  },
-  dotIndicator: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.accent,
   },
   navButton: {
     padding: 6,
     borderRadius: 8,
-    backgroundColor: "rgba(255, 255, 255, 0.06)",
+    backgroundColor: 'rgba(255,255,255,0.06)',
+  },
+  dayCell: {
+    width: CELL_SIZE,
+    alignItems: 'center',
+    paddingVertical: 8,
+    borderRadius: 12,
+    gap: 3,
+  },
+  dayCellActive: {
+    backgroundColor: colors.accent,
+  },
+  dayCellToday: {
+    backgroundColor: 'rgba(224,138,56,0.12)',
+  },
+  dotIndicator: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
   },
   expandButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: 6,
-    paddingTop: 12,
-    paddingBottom: 4,
+    paddingTop: 10,
+    paddingBottom: 2,
   },
 });

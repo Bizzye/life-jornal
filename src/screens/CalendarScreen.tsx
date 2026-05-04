@@ -1,54 +1,42 @@
-import { DayDetailList } from "@/components/calendar/DayDetailList";
-import { MonthGrid } from "@/components/calendar/MonthGrid";
-import { WeekStrip } from "@/components/calendar/WeekStrip";
-import { ScreenContainer } from "@/components/layout/ScreenContainer";
-import { useCalendarEntries } from "@/hooks/useCalendarEntries";
-import { colors } from "@/theme/tokens";
-import {
-  Calendar,
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react-native";
-import { useCallback, useState } from "react";
-import {
-  ActivityIndicator,
-  Modal,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  View,
-} from "react-native";
-import { Text, XStack, YStack } from "tamagui";
+import { DayDetailList } from '@/components/calendar/DayDetailList';
+import { MonthGrid } from '@/components/calendar/MonthGrid';
+import { WeekStrip } from '@/components/calendar/WeekStrip';
+import { ScreenContainer } from '@/components/layout/ScreenContainer';
+import { useCalendarEntries } from '@/hooks/useCalendarEntries';
+import { colors } from '@/theme/tokens';
+import { CalendarDays, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react-native';
+import { useCallback, useMemo, useState } from 'react';
+import { ActivityIndicator, Modal, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Text, XStack, YStack } from 'tamagui';
 
 const MONTH_NAMES = [
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro",
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro',
 ];
 
 const MONTH_SHORT = [
-  "Jan",
-  "Fev",
-  "Mar",
-  "Abr",
-  "Mai",
-  "Jun",
-  "Jul",
-  "Ago",
-  "Set",
-  "Out",
-  "Nov",
-  "Dez",
+  'Jan',
+  'Fev',
+  'Mar',
+  'Abr',
+  'Mai',
+  'Jun',
+  'Jul',
+  'Ago',
+  'Set',
+  'Out',
+  'Nov',
+  'Dez',
 ];
 
 export function CalendarScreen() {
@@ -64,6 +52,7 @@ export function CalendarScreen() {
     goToMonth,
     goToYear,
     goToToday,
+    goToDate,
   } = useCalendarEntries();
 
   const [showMonthPicker, setShowMonthPicker] = useState(false);
@@ -82,9 +71,9 @@ export function CalendarScreen() {
 
   const handleWeekChange = useCallback(
     (dateKey: string) => {
-      setSelectedDate(dateKey);
+      goToDate(dateKey);
     },
-    [setSelectedDate],
+    [goToDate],
   );
 
   const monthLabel = MONTH_NAMES[currentMonth.getMonth()];
@@ -92,12 +81,23 @@ export function CalendarScreen() {
 
   const todayKey = (() => {
     const now = new Date();
-    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   })();
   const isViewingToday =
     selectedDate === todayKey &&
     currentMonth.getMonth() === new Date().getMonth() &&
     currentMonth.getFullYear() === new Date().getFullYear();
+
+  // Month stats
+  const monthStats = useMemo(() => {
+    let totalEntries = 0;
+    let daysWithEntries = 0;
+    for (const [, summary] of daySummaries) {
+      totalEntries += summary.count;
+      daysWithEntries++;
+    }
+    return { totalEntries, daysWithEntries };
+  }, [daySummaries]);
 
   return (
     <ScreenContainer>
@@ -106,51 +106,68 @@ export function CalendarScreen() {
         contentContainerStyle={{ paddingBottom: 80 }}
       >
         {/* Header */}
-        <XStack
-          justifyContent="space-between"
-          alignItems="center"
-          marginBottom="$3"
-        >
+        <XStack justifyContent="space-between" alignItems="center" marginBottom="$3">
           <Pressable onPress={goToPrevMonth} hitSlop={14} style={s.arrowBtn}>
-            <ChevronLeft size={22} color={colors.textSecondary} />
+            <ChevronLeft size={20} color={colors.textSecondary} />
           </Pressable>
 
           <YStack alignItems="center" gap={2}>
-            <Pressable
-              onPress={() => setShowMonthPicker(true)}
-              style={s.headerPill}
-            >
-              <Text color={colors.textPrimary} fontSize={24} fontWeight="800">
+            <Pressable onPress={() => setShowMonthPicker(true)} style={s.headerPill}>
+              <Text color={colors.textPrimary} fontSize={22} fontWeight="800">
                 {monthLabel}
               </Text>
-              <ChevronDown size={16} color={colors.accent} />
+              <ChevronDown size={14} color={colors.accent} />
             </Pressable>
 
-            <Pressable
-              onPress={() => setShowYearPicker(true)}
-              style={s.yearPill}
-            >
-              <Text color={colors.textMuted} fontSize={14} fontWeight="600">
+            <Pressable onPress={() => setShowYearPicker(true)} style={s.yearPill}>
+              <Text color={colors.textMuted} fontSize={13} fontWeight="600">
                 {year}
               </Text>
-              <ChevronDown size={12} color={colors.textMuted} />
+              <ChevronDown size={10} color={colors.textMuted} />
             </Pressable>
           </YStack>
 
           <Pressable onPress={goToNextMonth} hitSlop={14} style={s.arrowBtn}>
-            <ChevronRight size={22} color={colors.textSecondary} />
+            <ChevronRight size={20} color={colors.textSecondary} />
           </Pressable>
         </XStack>
 
-        {/* Botão Hoje */}
-        {!isViewingToday && (
-          <Pressable style={s.todayButton} onPress={goToToday}>
-            <Calendar size={14} color={colors.accent} />
-            <Text color={colors.accent} fontSize={13} fontWeight="700">
-              Hoje
-            </Text>
-          </Pressable>
-        )}
+        {/* Stats + Today button */}
+        <XStack
+          justifyContent="space-between"
+          alignItems="center"
+          marginBottom="$3"
+          paddingHorizontal="$1"
+        >
+          <XStack gap="$3" alignItems="center">
+            <XStack alignItems="baseline" gap={4}>
+              <Text color={colors.accent} fontSize={18} fontWeight="700">
+                {monthStats.totalEntries}
+              </Text>
+              <Text color={colors.textMuted} fontSize={11}>
+                registros
+              </Text>
+            </XStack>
+            <View style={s.statDot} />
+            <XStack alignItems="baseline" gap={4}>
+              <Text color={colors.accent} fontSize={18} fontWeight="700">
+                {monthStats.daysWithEntries}
+              </Text>
+              <Text color={colors.textMuted} fontSize={11}>
+                dias ativos
+              </Text>
+            </XStack>
+          </XStack>
+
+          {!isViewingToday && (
+            <Pressable style={s.todayButton} onPress={goToToday}>
+              <CalendarDays size={13} color={colors.accent} />
+              <Text color={colors.accent} fontSize={12} fontWeight="700">
+                Ver hoje
+              </Text>
+            </Pressable>
+          )}
+        </XStack>
 
         {/* Calendar */}
         {loading ? (
@@ -200,8 +217,7 @@ export function CalendarScreen() {
               {MONTH_SHORT.map((name, i) => {
                 const isActive = i === currentMonth.getMonth();
                 const isCurrentMonth =
-                  i === new Date().getMonth() &&
-                  year === new Date().getFullYear();
+                  i === new Date().getMonth() && year === new Date().getFullYear();
                 return (
                   <Pressable
                     key={i}
@@ -220,7 +236,7 @@ export function CalendarScreen() {
                             : colors.textSecondary
                       }
                       fontSize={15}
-                      fontWeight={isActive ? "800" : "500"}
+                      fontWeight={isActive ? '800' : '500'}
                     >
                       {name}
                     </Text>
@@ -272,7 +288,7 @@ export function CalendarScreen() {
                             : colors.textSecondary
                       }
                       fontSize={18}
-                      fontWeight={isActive ? "800" : "500"}
+                      fontWeight={isActive ? '800' : '500'}
                     >
                       {y}
                     </Text>
@@ -291,77 +307,81 @@ const s = StyleSheet.create({
   arrowBtn: {
     padding: 8,
     borderRadius: 12,
-    backgroundColor: "rgba(255, 255, 255, 0.06)",
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
   },
   headerPill: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 6,
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 12,
   },
   yearPill: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 4,
     paddingHorizontal: 10,
     paddingVertical: 2,
     borderRadius: 8,
   },
+  statDot: {
+    width: 3,
+    height: 3,
+    borderRadius: 1.5,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+  },
   todayButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "center",
-    gap: 6,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: "rgba(224, 138, 56, 0.12)",
-    marginBottom: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    backgroundColor: 'rgba(224, 138, 56, 0.12)',
   },
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.65)",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   pickerCard: {
-    backgroundColor: "#1E221E",
+    backgroundColor: '#1E221E',
     borderRadius: 20,
     padding: 24,
     width: 340,
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.08)",
+    borderColor: 'rgba(255, 255, 255, 0.08)',
   },
   monthGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     gap: 6,
   },
   monthCell: {
-    width: "30%",
+    width: '30%',
     paddingVertical: 14,
-    alignItems: "center",
+    alignItems: 'center',
     borderRadius: 14,
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
   },
   yearGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     gap: 8,
   },
   yearCell: {
     paddingHorizontal: 22,
     paddingVertical: 14,
     borderRadius: 14,
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
   },
   cellActive: {
-    backgroundColor: "rgba(224, 138, 56, 0.18)",
+    backgroundColor: 'rgba(224, 138, 56, 0.18)',
     borderWidth: 1,
-    borderColor: "rgba(224, 138, 56, 0.4)",
+    borderColor: 'rgba(224, 138, 56, 0.4)',
   },
 });

@@ -1,12 +1,10 @@
-import { ChevronLeft, ChevronRight, X } from "lucide-react-native";
-import { useRef, useState } from "react";
-import { Image, Pressable, StyleSheet, View } from "react-native";
-import Carousel, {
-  type ICarouselInstance,
-} from "react-native-reanimated-carousel";
-import { XStack } from "tamagui";
+import { ChevronLeft, ChevronRight, X } from 'lucide-react-native';
+import { useRef, useState } from 'react';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import Carousel, { type ICarouselInstance } from 'react-native-reanimated-carousel';
+import { XStack } from 'tamagui';
 
-const ACCENT = "#E08A38";
+const ACCENT = '#E08A38';
 const DOT_SIZE = 6;
 
 interface ImageCarouselProps {
@@ -38,20 +36,22 @@ export function ImageCarousel({
   const goPrev = () => canPrev && carouselRef.current?.prev();
   const goNext = () => canNext && carouselRef.current?.next();
 
+  // When no aspectRatio, cap at 4:5 portrait like Instagram
+  const MAX_PORTRAIT_RATIO = 4 / 5; // 0.8 → height = width × 1.25
   const imageHeight =
-    height ?? (aspectRatio ? containerWidth / aspectRatio : 200);
+    height ?? (aspectRatio ? containerWidth / aspectRatio : containerWidth / MAX_PORTRAIT_RATIO);
 
   const containerStyle = aspectRatio
     ? {
-        width: "100%" as const,
+        width: '100%' as const,
         aspectRatio,
-        overflow: "hidden" as const,
-        position: "relative" as const,
+        overflow: 'hidden' as const,
+        position: 'relative' as const,
       }
     : {
         borderRadius: 12,
-        overflow: "hidden" as const,
-        position: "relative" as const,
+        overflow: 'hidden' as const,
+        position: 'relative' as const,
       };
 
   if (containerWidth === 0) {
@@ -64,10 +64,7 @@ export function ImageCarousel({
   }
 
   return (
-    <View
-      style={containerStyle}
-      onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}
-    >
+    <View style={containerStyle} onLayout={(e) => setContainerWidth(e.nativeEvent.layout.width)}>
       <Carousel
         ref={carouselRef}
         data={images}
@@ -100,34 +97,19 @@ export function ImageCarousel({
 
       {/* Arrow buttons */}
       {total > 1 && canPrev && (
-        <Pressable
-          onPress={goPrev}
-          style={[s.arrowBtn, s.arrowLeft]}
-          hitSlop={8}
-        >
+        <Pressable onPress={goPrev} style={[s.arrowBtn, s.arrowLeft]} hitSlop={8}>
           <ChevronLeft size={20} color="#fff" />
         </Pressable>
       )}
       {total > 1 && canNext && (
-        <Pressable
-          onPress={goNext}
-          style={[s.arrowBtn, s.arrowRight]}
-          hitSlop={8}
-        >
+        <Pressable onPress={goNext} style={[s.arrowBtn, s.arrowRight]} hitSlop={8}>
           <ChevronRight size={20} color="#fff" />
         </Pressable>
       )}
 
       {/* Dot indicators */}
       {total > 1 && (
-        <XStack
-          justifyContent="center"
-          gap={5}
-          position="absolute"
-          bottom={10}
-          left={0}
-          right={0}
-        >
+        <XStack justifyContent="center" gap={5} position="absolute" bottom={10} left={0} right={0}>
           {images.map((_, i) => (
             <Pressable
               key={i}
@@ -135,9 +117,7 @@ export function ImageCarousel({
                 carouselRef.current?.scrollTo({ index: i, animated: true });
               }}
             >
-              <View
-                style={[s.dot, i === safeIndex ? s.dotActive : s.dotInactive]}
-              />
+              <View style={[s.dot, i === safeIndex ? s.dotActive : s.dotInactive]} />
             </Pressable>
           ))}
         </XStack>
@@ -148,26 +128,26 @@ export function ImageCarousel({
 
 const s = StyleSheet.create({
   removeBtn: {
-    position: "absolute",
+    position: 'absolute',
     top: 8,
     right: 8,
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: 'rgba(0,0,0,0.6)',
     borderRadius: 14,
     width: 28,
     height: 28,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   arrowBtn: {
-    position: "absolute",
-    top: "50%",
+    position: 'absolute',
+    top: '50%',
     marginTop: -16,
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: "rgba(0,0,0,0.45)",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: 'rgba(0,0,0,0.45)',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   arrowLeft: {
     left: 8,
@@ -184,6 +164,6 @@ const s = StyleSheet.create({
     backgroundColor: ACCENT,
   },
   dotInactive: {
-    backgroundColor: "rgba(255,255,255,0.35)",
+    backgroundColor: 'rgba(255,255,255,0.35)',
   },
 });

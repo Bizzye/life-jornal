@@ -1,28 +1,27 @@
-import type { EntryInput } from "@/schemas/entry.schema";
-import { entryService } from "@/services/entry.service";
-import { useAuthStore } from "@/stores/auth.store";
-import { useEntryStore } from "@/stores/entry.store";
-import { useCallback, useEffect, useRef, useState } from "react";
+import type { EntryInput } from '@/schemas/entry.schema';
+import { entryService } from '@/services/entry.service';
+import { useAuthStore } from '@/stores/auth.store';
+import { useEntryStore } from '@/stores/entry.store';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const PAGE_SIZE = 5;
 
-export function useEntries(filters?: { category?: string }) {
-  const { entries, loading, setEntries, addEntry, removeEntry, setLoading } =
-    useEntryStore();
+export function useEntries(filters?: { category_id?: string }) {
+  const { entries, loading, setEntries, addEntry, removeEntry, setLoading } = useEntryStore();
   const userId = useAuthStore((s) => s.user?.id);
   const [hasMore, setHasMore] = useState(true);
   const offsetRef = useRef(0);
-  const filterRef = useRef(filters?.category);
+  const filterRef = useRef(filters?.category_id);
 
   // Reset when filter changes
   useEffect(() => {
-    if (filterRef.current !== filters?.category) {
-      filterRef.current = filters?.category;
+    if (filterRef.current !== filters?.category_id) {
+      filterRef.current = filters?.category_id;
       offsetRef.current = 0;
       setHasMore(true);
       setEntries([]);
     }
-  }, [filters?.category]);
+  }, [filters?.category_id]);
 
   const fetchPage = useCallback(
     async (reset = false) => {
@@ -34,7 +33,7 @@ export function useEntries(filters?: { category?: string }) {
       setLoading(true);
       try {
         const data = await entryService.list(userId, {
-          category: filters?.category,
+          category_id: filters?.category_id,
           offset: offsetRef.current,
           limit: PAGE_SIZE,
         });
@@ -49,7 +48,7 @@ export function useEntries(filters?: { category?: string }) {
         setLoading(false);
       }
     },
-    [userId, filters?.category, entries],
+    [userId, filters?.category_id, entries],
   );
 
   // Initial load + reload on filter change
@@ -60,7 +59,7 @@ export function useEntries(filters?: { category?: string }) {
       setLoading(true);
       entryService
         .list(userId, {
-          category: filters?.category,
+          category_id: filters?.category_id,
           offset: 0,
           limit: PAGE_SIZE,
         })
@@ -71,7 +70,7 @@ export function useEntries(filters?: { category?: string }) {
         })
         .finally(() => setLoading(false));
     }
-  }, [userId, filters?.category]);
+  }, [userId, filters?.category_id]);
 
   const loadMore = useCallback(() => {
     if (!loading && hasMore) {

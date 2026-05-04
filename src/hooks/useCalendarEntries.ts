@@ -6,8 +6,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 function monthRange(date: Date): { start: string; end: string } {
   const y = date.getFullYear();
   const m = date.getMonth();
-  const start = new Date(y, m, 1);
-  const end = new Date(y, m + 1, 0, 23, 59, 59);
+  // Pad by 7 days on each side so cross-month weeks have data
+  const start = new Date(y, m, 1 - 7);
+  const end = new Date(y, m + 1, 7, 23, 59, 59);
   return {
     start: start.toISOString(),
     end: end.toISOString(),
@@ -106,6 +107,16 @@ export function useCalendarEntries() {
     setSelectedDate(todayKey);
   }, []);
 
+  /** Navigate to an arbitrary date — updates month if needed so data is fetched */
+  const goToDate = useCallback((dateKey: string) => {
+    const [y, m] = dateKey.split("-").map(Number);
+    setCurrentMonth((prev) => {
+      if (prev.getFullYear() === y && prev.getMonth() === m - 1) return prev;
+      return new Date(y, m - 1, 1);
+    });
+    setSelectedDate(dateKey);
+  }, []);
+
   return {
     currentMonth,
     loading,
@@ -118,6 +129,7 @@ export function useCalendarEntries() {
     goToMonth,
     goToYear,
     goToToday,
+    goToDate,
     refetch: fetchMonth,
   };
 }

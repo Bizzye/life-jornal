@@ -1,10 +1,11 @@
-import { ImageCarousel } from "@/components/ui/ImageCarousel";
-import { CATEGORY_CONFIG } from "@/lib/constants";
-import { formatTime, getCategoryColor } from "@/lib/utils";
-import type { Registro } from "@/types";
-import { createElement } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
-import { Text, XStack, YStack } from "tamagui";
+import { ImageCarousel } from '@/components/ui/ImageCarousel';
+import { CATEGORY_CONFIG, type Category } from '@/lib/constants';
+import { formatTime } from '@/lib/utils';
+import { useCategoryStore } from '@/stores/category.store';
+import type { Registro } from '@/types';
+import { Clock, Image as ImageIcon } from 'lucide-react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text, XStack, YStack } from 'tamagui';
 
 interface EntryCardProps {
   registro: Registro;
@@ -12,65 +13,87 @@ interface EntryCardProps {
 }
 
 export function EntryCard({ registro, onPress }: EntryCardProps) {
-  const color = getCategoryColor(registro.category);
-  const config = CATEGORY_CONFIG[registro.category];
+  const categories = useCategoryStore((s) => s.categories);
+
+  const dynamicCat = registro.category_id
+    ? categories.find((c) => c.id === registro.category_id)
+    : null;
+  const legacyConfig = registro.category ? CATEGORY_CONFIG[registro.category as Category] : null;
+
+  const color = dynamicCat?.color ?? legacyConfig?.color ?? '#E08A38';
+  const label = dynamicCat?.name ?? legacyConfig?.label ?? 'Registro';
+  const subLabel =
+    registro.subcategory_id && dynamicCat
+      ? dynamicCat.subcategories?.find((s) => s.id === registro.subcategory_id)?.name
+      : null;
+
   const hasPhotos = registro.photo_urls?.length > 0;
+  const photoCount = registro.photo_urls?.length ?? 0;
 
   return (
-    <Pressable onPress={onPress} style={s.card}>
+    <Pressable onPress={onPress} style={({ pressed }) => [s.card, pressed && s.cardPressed]}>
       <View style={s.inner}>
-        {/* Left category accent line */}
+        {/* Left accent */}
         <View style={[s.accentLine, { backgroundColor: color }]} />
 
-        {/* Content */}
-        <View style={s.content}>
-          <XStack
-            alignItems="center"
-            gap="$2"
-            paddingHorizontal="$3"
-            paddingTop="$3"
-            paddingBottom="$2"
-          >
-            <View style={[s.categoryDot, { backgroundColor: color }]}>
-              {createElement(config.icon, { size: 14, color: "#fff" })}
-            </View>
-            <YStack flex={1}>
-              <Text
-                color="#F5F0E8"
-                fontSize={16}
-                fontWeight="700"
-                numberOfLines={1}
-              >
-                {registro.title}
-              </Text>
-              <Text color="rgba(245,240,232,0.5)" fontSize={12}>
-                {config.label} · {formatTime(registro.created_at)}
-              </Text>
-            </YStack>
-          </XStack>
-
-          {/* Image area */}
+        <YStack flex={1}>
+          {/* Photo */}
           {hasPhotos && (
-            <ImageCarousel images={registro.photo_urls} aspectRatio={4 / 3} />
+            <View style={s.imageWrap}>
+              <ImageCarousel images={registro.photo_urls} aspectRatio={16 / 9} />
+              {photoCount > 1 && (
+                <View style={s.photoBadge}>
+                  <ImageIcon size={10} color="#fff" />
+                  <Text color="#fff" fontSize={10} fontWeight="600" marginLeft={3}>
+                    {photoCount}
+                  </Text>
+                </View>
+              )}
+            </View>
           )}
 
-          {/* Body text */}
-          {registro.body ? (
-            <Text
-              color="rgba(245,240,232,0.65)"
-              fontSize={13}
-              numberOfLines={2}
-              paddingHorizontal="$3"
-              paddingTop={hasPhotos ? "$2" : 0}
-              paddingBottom="$3"
-              lineHeight={19}
-            >
-              {registro.body}
+          {/* Text content */}
+          <YStack paddingHorizontal="$3" paddingVertical="$2.5" gap="$1.5">
+            {/* Title */}
+            <Text color="#F5F0E8" fontSize={15} fontWeight="700" numberOfLines={1}>
+              {registro.title}
             </Text>
-          ) : (
-            <View style={{ height: 12 }} />
-          )}
-        </View>
+
+            {/* Body preview */}
+            {registro.body ? (
+              <Text color="rgba(245,240,232,0.55)" fontSize={13} numberOfLines={2} lineHeight={18}>
+                {registro.body}
+              </Text>
+            ) : null}
+
+            {/* Footer: category + time */}
+            <XStack alignItems="center" gap="$2" marginTop="$1">
+              <View style={[s.categoryChip, { backgroundColor: `${color}20` }]}>
+                <View style={[s.chipDot, { backgroundColor: color }]} />
+                <Text color={color} fontSize={11} fontWeight="600">
+                  {label}
+                </Text>
+              </View>
+
+              {subLabel && (
+                <View style={[s.categoryChip, { backgroundColor: `${color}12` }]}>
+                  <Text color={`${color}CC`} fontSize={11} fontWeight="500">
+                    {subLabel}
+                  </Text>
+                </View>
+              )}
+
+              <XStack flex={1} />
+
+              <XStack alignItems="center" gap={4}>
+                <Clock size={11} color="rgba(245,240,232,0.35)" />
+                <Text color="rgba(245,240,232,0.35)" fontSize={11}>
+                  {formatTime(registro.event_date)}
+                </Text>
+              </XStack>
+            </XStack>
+          </YStack>
+        </YStack>
       </View>
     </Pressable>
   );
@@ -78,29 +101,50 @@ export function EntryCard({ registro, onPress }: EntryCardProps) {
 
 const s = StyleSheet.create({
   card: {
-    backgroundColor: "rgba(255,255,255,0.06)",
-    borderRadius: 4,
-    marginBottom: 14,
-    overflow: "hidden",
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    borderRadius: 12,
+    marginBottom: 12,
+    overflow: 'hidden',
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.08)",
+    borderColor: 'rgba(255,255,255,0.07)',
+  },
+  cardPressed: {
+    opacity: 0.85,
+    backgroundColor: 'rgba(255,255,255,0.08)',
   },
   inner: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   accentLine: {
-    width: 4,
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
+    width: 3,
+    borderTopLeftRadius: 12,
+    borderBottomLeftRadius: 12,
   },
-  content: {
-    flex: 1,
+  imageWrap: {
+    position: 'relative',
   },
-  categoryDot: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    alignItems: "center",
-    justifyContent: "center",
+  photoBadge: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    borderRadius: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+  },
+  categoryChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+    gap: 5,
+  },
+  chipDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
   },
 });

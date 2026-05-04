@@ -1,51 +1,39 @@
-import { Category } from "@/lib/constants";
-import { colors } from "@/theme/tokens";
-
-export function getCategoryColor(category: Category): string {
-  const map: Record<Category, string> = {
-    event: colors.categoryEvent,
-    food: colors.categoryFood,
-    personal: colors.categoryPersonal,
-  };
-  return map[category];
-}
-
 export function getGreeting(): string {
   const hour = new Date().getHours();
-  if (hour < 12) return "Bom dia";
-  if (hour < 18) return "Boa tarde";
-  return "Boa noite";
+  if (hour < 12) return 'Bom dia';
+  if (hour < 18) return 'Boa tarde';
+  return 'Boa noite';
 }
 
 export function formatDate(dateStr: string): string {
   const date = new Date(dateStr);
-  return date.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
+  return date.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
   });
 }
 
 export function formatTime(dateStr: string): string {
   const date = new Date(dateStr);
-  return date.toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
+  return date.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit',
   });
 }
 
 export function todayISO(): string {
   const now = new Date();
   const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, "0");
-  const d = String(now.getDate()).padStart(2, "0");
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
   return `${y}-${m}-${d}`;
 }
 
 export function nowTime(): string {
-  return new Date().toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
+  return new Date().toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit',
     hour12: false,
   });
 }
@@ -53,19 +41,19 @@ export function nowTime(): string {
 export function formatDayHeader(dateStr: string): string {
   const today = todayISO();
 
-  if (dateStr === today) return "Hoje";
+  if (dateStr === today) return 'Hoje';
 
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
   const yy = yesterday.getFullYear();
-  const ym = String(yesterday.getMonth() + 1).padStart(2, "0");
-  const yd = String(yesterday.getDate()).padStart(2, "0");
-  if (dateStr === `${yy}-${ym}-${yd}`) return "Ontem";
+  const ym = String(yesterday.getMonth() + 1).padStart(2, '0');
+  const yd = String(yesterday.getDate()).padStart(2, '0');
+  if (dateStr === `${yy}-${ym}-${yd}`) return 'Ontem';
 
-  const d = new Date(dateStr + "T12:00:00");
-  return d.toLocaleDateString("pt-BR", {
-    weekday: "long",
-    day: "2-digit",
-    month: "long",
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('pt-BR', {
+    weekday: 'long',
+    day: '2-digit',
+    month: 'long',
   });
 }

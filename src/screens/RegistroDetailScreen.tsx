@@ -1,29 +1,23 @@
+import { RegistroForm } from '@/components/entry/RegistroForm';
 import { ScreenContainer } from '@/components/layout/ScreenContainer';
-import { Button } from '@/components/ui/Button';
-import { DateInput } from '@/components/ui/DateInput';
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { ImageCarousel } from '@/components/ui/ImageCarousel';
-import { Input } from '@/components/ui/Input';
-import { Select } from '@/components/ui/Select';
-import { TextArea } from '@/components/ui/TextArea';
-import { TimeInput } from '@/components/ui/TimeInput';
-import { useImagePicker } from '@/hooks/useImagePicker';
-import { CATEGORY_CONFIG } from '@/lib/constants';
-import { formatDate, formatTime, getCategoryColor } from '@/lib/utils';
+import { CATEGORY_CONFIG, type Category } from '@/lib/constants';
+import { friendlyError } from '@/lib/errorMessages';
+import { formatDate, formatTime } from '@/lib/utils';
+import type { EntryInput } from '@/schemas/entry.schema';
 import { entryService } from '@/services/entry.service';
+import { useCategoryStore } from '@/stores/category.store';
 import { useEntryStore } from '@/stores/entry.store';
 import { colors } from '@/theme/tokens';
-import type { Category } from '@/types';
+import type { FieldType } from '@/types';
+import { toast } from '@tamagui/v2-toast';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Calendar, ChevronLeft, Clock, Pencil, Trash2 } from 'lucide-react-native';
-import { createElement, useState } from 'react';
-import { Alert, Platform, ScrollView } from 'react-native';
+import { useState } from 'react';
+import { ScrollView } from 'react-native';
 import { Text, View, XStack, YStack } from 'tamagui';
-
-const categoryOptions = Object.entries(CATEGORY_CONFIG).map(([key, cfg]) => ({
-  label: cfg.label,
-  value: key,
-}));
 
 export function RegistroDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -31,28 +25,12 @@ export function RegistroDetailScreen() {
   const entries = useEntryStore((s) => s.entries);
   const updateEntry = useEntryStore((s) => s.updateEntry);
   const removeEntry = useEntryStore((s) => s.removeEntry);
-  const { pickAndUpload, uploading } = useImagePicker();
+  const storeCategories = useCategoryStore((s) => s.categories);
 
   const registro = entries.find((e) => e.id === id);
 
   const [editing, setEditing] = useState(false);
-  const [saving, setSaving] = useState(false);
-
-  // Edit state
-  const [category, setCategory] = useState<Category>(registro?.category ?? 'event');
-  const [title, setTitle] = useState(registro?.title ?? '');
-  const [body, setBody] = useState(registro?.body ?? '');
-  const [eventDate, setEventDate] = useState(registro?.event_date?.split('T')[0] ?? '');
-  const [eventTime, setEventTime] = useState(
-    registro?.event_date
-      ? new Date(registro.event_date).toLocaleTimeString('pt-BR', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false,
-        })
-      : '00:00',
-  );
-  const [photoUrls, setPhotoUrls] = useState<string[]>(registro?.photo_urls ?? []);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   if (!registro) {
     return (
@@ -64,92 +42,35 @@ export function RegistroDetailScreen() {
     );
   }
 
-  const config = CATEGORY_CONFIG[registro.category];
-  const categoryColor = getCategoryColor(registro.category);
+  // View mode: resolve category info
+  const dynamicCat = registro.category_id
+    ? storeCategories.find((c) => c.id === registro.category_id)
+    : null;
+  const legacyConfig = registro.category ? CATEGORY_CONFIG[registro.category as Category] : null;
+  const categoryColor = dynamicCat?.color ?? legacyConfig?.color ?? colors.accent;
+  const categoryLabel = dynamicCat?.name ?? legacyConfig?.label ?? 'Registro';
+  const subLabel =
+    registro.subcategory_id && dynamicCat
+      ? dynamicCat.subcategories?.find((s) => s.id === registro.subcategory_id)?.name
+      : null;
 
-  const startEdit = () => {
-    setCategory(registro.category);
-    setTitle(registro.title);
-    setBody(registro.body ?? '');
-    setEventDate(registro.event_date.split('T')[0]);
-    setEventTime(
-      new Date(registro.event_date).toLocaleTimeString('pt-BR', {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      }),
-    );
-    setPhotoUrls(registro.photo_urls ?? []);
-    setEditing(true);
-  };
-
-  const cancelEdit = () => {
+  const handleSave = async (data: EntryInput) => {
+    const updated = await entryService.update(id, data);
+    updateEntry(id, updated);
     setEditing(false);
   };
 
-  const handleSave = async () => {
-    setSaving(true);
+  const doDelete = async () => {
     try {
-      const updated = await entryService.update(id, {
-        category,
-        title,
-        body: body || undefined,
-        event_date: eventDate,
-        event_time: eventTime,
-        photo_urls: photoUrls,
-      });
-      updateEntry(id, updated);
-      setEditing(false);
+      await entryService.remove(id);
+      removeEntry(id);
+      router.back();
     } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Erro ao salvar';
-      if (Platform.OS === 'web') {
-        alert(msg);
-      } else {
-        Alert.alert('Erro', msg);
-      }
-    } finally {
-      setSaving(false);
+      toast.error(friendlyError(err, 'Erro ao excluir registro'));
     }
   };
 
-  const handleDelete = () => {
-    const doDelete = async () => {
-      try {
-        await entryService.remove(id);
-        removeEntry(id);
-        router.back();
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Erro ao excluir';
-        if (Platform.OS === 'web') {
-          alert(msg);
-        } else {
-          Alert.alert('Erro', msg);
-        }
-      }
-    };
-
-    if (Platform.OS === 'web') {
-      if (confirm('Tem certeza que deseja excluir este registro?')) {
-        doDelete();
-      }
-    } else {
-      Alert.alert('Excluir registro', 'Tem certeza que deseja excluir este registro?', [
-        { text: 'Cancelar', style: 'cancel' },
-        { text: 'Excluir', style: 'destructive', onPress: doDelete },
-      ]);
-    }
-  };
-
-  const handleAddPhoto = async () => {
-    const url = await pickAndUpload();
-    if (url) {
-      setPhotoUrls((prev) => [...prev, url]);
-    }
-  };
-
-  const handleRemovePhoto = (index: number) => {
-    setPhotoUrls((prev) => prev.filter((_, i) => i !== index));
-  };
+  const handleDelete = () => setDeleteOpen(true);
 
   return (
     <ScreenContainer>
@@ -172,7 +93,7 @@ export function RegistroDetailScreen() {
 
           <XStack gap="$3">
             <View
-              onPress={editing ? cancelEdit : startEdit}
+              onPress={() => setEditing(!editing)}
               pressStyle={{ opacity: 0.7 }}
               cursor="pointer"
               padding="$1"
@@ -191,59 +112,13 @@ export function RegistroDetailScreen() {
         </XStack>
 
         {editing ? (
-          /* ====== EDIT MODE ====== */
-          <YStack gap="$4">
-            {/* Photos */}
-            {photoUrls.length > 0 && (
-              <ImageCarousel
-                images={photoUrls}
-                onRemove={handleRemovePhoto}
-                editable
-                aspectRatio={16 / 9}
-              />
-            )}
-            {photoUrls.length < 3 && (
-              <Button onPress={handleAddPhoto} disabled={uploading} variant="secondary">
-                {uploading ? 'Enviando...' : 'Adicionar foto'}
-              </Button>
-            )}
-
-            {/* Category */}
-            <Select
-              options={categoryOptions}
-              value={category}
-              onValueChange={(v) => setCategory(v as Category)}
-              placeholder="Categoria"
-            />
-
-            {/* Title */}
-            <Input value={title} onChangeText={setTitle} placeholder="Título" />
-
-            {/* Date & Time */}
-            <XStack gap="$3">
-              <YStack flex={1}>
-                <DateInput value={eventDate} onChange={setEventDate} />
-              </YStack>
-              <YStack flex={1}>
-                <TimeInput value={eventTime} onChange={setEventTime} />
-              </YStack>
-            </XStack>
-
-            {/* Body */}
-            <TextArea value={body} onChangeText={setBody} placeholder="Descrição (opcional)" />
-
-            {/* Save */}
-            <Button onPress={handleSave} disabled={saving || !title.trim()}>
-              {saving ? 'Salvando...' : 'Salvar alterações'}
-            </Button>
-          </YStack>
+          /* ====== EDIT MODE — unified RegistroForm ====== */
+          <RegistroForm registro={registro} onSubmit={handleSave} submitLabel="Salvar alterações" />
         ) : (
           /* ====== VIEW MODE ====== */
           <YStack gap="$4">
             {/* Photos */}
-            {registro.photo_urls?.length > 0 && (
-              <ImageCarousel images={registro.photo_urls} aspectRatio={16 / 9} />
-            )}
+            {registro.photo_urls?.length > 0 && <ImageCarousel images={registro.photo_urls} />}
 
             {/* Category badge */}
             <XStack alignItems="center" gap="$2">
@@ -254,9 +129,9 @@ export function RegistroDetailScreen() {
                 paddingHorizontal="$2"
               >
                 <XStack alignItems="center" gap="$1">
-                  {createElement(config.icon, { size: 14, color: '#fff' })}
                   <Text color="#fff" fontSize={12} fontWeight="600">
-                    {config.label}
+                    {categoryLabel}
+                    {subLabel ? ` · ${subLabel}` : ''}
                   </Text>
                 </XStack>
               </View>
@@ -268,8 +143,8 @@ export function RegistroDetailScreen() {
             </Text>
 
             {/* Date/Time card */}
-            <GlassCard>
-              <XStack alignItems="center" gap="$3" padding="$3">
+            <GlassCard padding="$3">
+              <XStack alignItems="center" gap="$3">
                 <XStack alignItems="center" gap="$2">
                   <Calendar size={16} color={colors.accent} />
                   <Text color="$textSecondary" fontSize={14}>
@@ -287,14 +162,54 @@ export function RegistroDetailScreen() {
 
             {/* Body */}
             {registro.body && (
-              <GlassCard>
-                <YStack padding="$3">
-                  <Text color="$textPrimary" fontSize={14} lineHeight={22}>
-                    {registro.body}
-                  </Text>
-                </YStack>
+              <GlassCard padding="$3">
+                <Text color="$textPrimary" fontSize={14} lineHeight={22}>
+                  {registro.body}
+                </Text>
               </GlassCard>
             )}
+
+            {/* Custom field values */}
+            {(() => {
+              const fieldValues = registro.custom_field_values;
+              const fieldDefs = dynamicCat?.custom_fields ?? [];
+              if (!fieldValues || Object.keys(fieldValues).length === 0 || fieldDefs.length === 0)
+                return null;
+
+              const filledFields = fieldDefs.filter(
+                (f) => fieldValues[f.id] !== undefined && fieldValues[f.id] !== '',
+              );
+              if (filledFields.length === 0) return null;
+
+              return (
+                <GlassCard padding="$3">
+                  <YStack gap="$2">
+                    <Text
+                      color="$textMuted"
+                      fontSize={11}
+                      fontWeight="600"
+                      textTransform="uppercase"
+                      letterSpacing={1}
+                    >
+                      Campos adicionais
+                    </Text>
+                    {filledFields.map((field) => {
+                      const val = fieldValues[field.id];
+                      return (
+                        <XStack key={field.id} justifyContent="space-between" alignItems="center">
+                          <Text color="$textSecondary" fontSize={13}>
+                            {field.name}
+                          </Text>
+                          <Text color="$textPrimary" fontSize={13} fontWeight="600">
+                            {formatFieldValue(field.field_type, val)}
+                          </Text>
+                        </XStack>
+                      );
+                    })}
+                  </YStack>
+                </GlassCard>
+              );
+            })()}
 
             {/* Metadata */}
             <YStack gap="$1" marginTop="$2">
@@ -309,6 +224,27 @@ export function RegistroDetailScreen() {
           </YStack>
         )}
       </ScrollView>
+
+      <ConfirmDialog
+        open={deleteOpen}
+        onOpenChange={setDeleteOpen}
+        title="Excluir registro"
+        description="Tem certeza que deseja excluir este registro?"
+        confirmLabel="Excluir"
+        destructive
+        onConfirm={doDelete}
+      />
     </ScreenContainer>
   );
+}
+
+function formatFieldValue(fieldType: FieldType, value: string | number | boolean): string {
+  switch (fieldType) {
+    case 'checkbox':
+      return value ? 'Sim' : 'Não';
+    case 'rating':
+      return '★'.repeat(Number(value) || 0) + '☆'.repeat(5 - (Number(value) || 0));
+    default:
+      return String(value);
+  }
 }

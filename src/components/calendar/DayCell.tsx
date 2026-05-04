@@ -1,10 +1,9 @@
-import { colors } from "@/theme/tokens";
-import React, { memo } from "react";
-import { Pressable, StyleSheet } from "react-native";
-import Svg, { Circle } from "react-native-svg";
-import { Text } from "tamagui";
+import { colors } from '@/theme/tokens';
+import React, { memo } from 'react';
+import { Pressable, StyleSheet, View } from 'react-native';
+import { Text } from 'tamagui';
 
-const DEFAULT_SIZE = 44;
+const DEFAULT_SIZE = 42;
 
 interface DayCellProps {
   day: number;
@@ -18,44 +17,6 @@ interface DayCellProps {
   size?: number;
 }
 
-function ActivityRing({ count, size }: { count: number; size: number }) {
-  if (count === 0) return null;
-
-  const scale = size / DEFAULT_SIZE;
-  const radius = 18 * scale;
-  const stroke = 3 * scale;
-  const circumference = 2 * Math.PI * radius;
-  const fillPercent = Math.min(count / 3, 1);
-  const dashOffset = circumference * (1 - fillPercent);
-
-  return (
-    <Svg width={size} height={size} style={StyleSheet.absoluteFill}>
-      <Circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        stroke={colors.accent}
-        strokeOpacity={0.2}
-        strokeWidth={stroke}
-        fill="none"
-      />
-      <Circle
-        cx={size / 2}
-        cy={size / 2}
-        r={radius}
-        stroke={colors.accent}
-        strokeWidth={stroke}
-        fill="none"
-        strokeDasharray={`${circumference}`}
-        strokeDashoffset={dashOffset}
-        strokeLinecap="round"
-        rotation={-90}
-        origin={`${size / 2}, ${size / 2}`}
-      />
-    </Svg>
-  );
-}
-
 export const DayCell = memo(function DayCell({
   day,
   dateKey,
@@ -67,39 +28,75 @@ export const DayCell = memo(function DayCell({
   onPress,
   size = DEFAULT_SIZE,
 }: DayCellProps) {
-  const textColor = isToday
-    ? colors.accent
-    : isCurrentMonth
-      ? colors.textPrimary
-      : colors.textMuted;
-
-  const fontSize = size > DEFAULT_SIZE ? 16 : 13;
+  const isHighlighted = isSelected || isToday;
 
   return (
     <Pressable
       onPress={() => onPress(dateKey)}
       style={[
-        {
-          width: size,
-          height: size,
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: size / 2,
-        },
-        isSelected && {
-          backgroundColor: "rgba(224, 138, 56, 0.15)",
-        },
+        styles.cell,
+        { width: size, height: size, borderRadius: size * 0.28 },
+        isSelected && styles.selected,
+        isToday && !isSelected && styles.today,
       ]}
     >
-      <ActivityRing count={count} size={size} />
       <Text
-        color={textColor}
-        fontSize={fontSize}
-        fontWeight={isToday ? "800" : isSelected ? "700" : "400"}
-        style={{ zIndex: 1 }}
+        color={
+          isSelected
+            ? '#fff'
+            : isToday
+              ? colors.accent
+              : isCurrentMonth
+                ? colors.textPrimary
+                : 'rgba(245,240,232,0.2)'
+        }
+        fontSize={14}
+        fontWeight={isHighlighted ? '700' : '400'}
       >
         {day}
       </Text>
+      {/* Activity dots */}
+      {hasRegistros && (
+        <View style={styles.dotRow}>
+          {Array.from({ length: Math.min(count, 3) }).map((_, i) => (
+            <View
+              key={i}
+              style={[
+                styles.dot,
+                {
+                  backgroundColor: isSelected ? 'rgba(255,255,255,0.7)' : colors.accent,
+                  opacity: isCurrentMonth ? 1 : 0.3,
+                },
+              ]}
+            />
+          ))}
+        </View>
+      )}
     </Pressable>
   );
+});
+
+const styles = StyleSheet.create({
+  cell: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
+  },
+  selected: {
+    backgroundColor: colors.accent,
+  },
+  today: {
+    backgroundColor: 'rgba(224,138,56,0.12)',
+  },
+  dotRow: {
+    flexDirection: 'row',
+    gap: 2,
+    position: 'absolute',
+    bottom: 4,
+  },
+  dot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+  },
 });

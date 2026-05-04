@@ -1,17 +1,16 @@
-import * as ImagePicker from "expo-image-picker";
-import { supabase } from "@/lib/supabase";
-import { decode } from "base64-arraybuffer";
+import { supabase } from '@/lib/supabase';
+import { decode } from 'base64-arraybuffer';
+import * as ImagePicker from 'expo-image-picker';
 
-const BUCKET = "entry-photos";
+const BUCKET = 'entry-photos';
 
 export const storageService = {
   async pickImage(): Promise<string | null> {
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ["images"],
+      mediaTypes: ['images'],
       quality: 0.7,
       base64: true,
       allowsEditing: true,
-      aspect: [4, 3],
     });
 
     if (result.canceled || !result.assets[0].base64) return null;
@@ -20,12 +19,10 @@ export const storageService = {
 
   async upload(userId: string, base64: string): Promise<string> {
     const fileName = `${userId}/${Date.now()}.jpg`;
-    const { error } = await supabase.storage
-      .from(BUCKET)
-      .upload(fileName, decode(base64), {
-        contentType: "image/jpeg",
-        upsert: false,
-      });
+    const { error } = await supabase.storage.from(BUCKET).upload(fileName, decode(base64), {
+      contentType: 'image/jpeg',
+      upsert: false,
+    });
     if (error) throw error;
 
     const { data } = supabase.storage.from(BUCKET).getPublicUrl(fileName);
